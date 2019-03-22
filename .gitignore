@@ -30,3 +30,19 @@
 *.exe
 *.out
 *.app
+
+# Binary Data
+*.nc
+
+# NEMO output files
+layout.dat
+ocean.output
+stdouterr_nemo
+timing.output
+Caribbean.o*
+Caribbean.e*
+xios_server.exe
+nemo
+output.namelist.dyn
+stdouterr
+stdouterr_xios
