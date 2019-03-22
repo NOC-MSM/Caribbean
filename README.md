@@ -14,7 +14,7 @@ NB This recipe has be written with the ARCHER HPC INTEL environment in mind.
 ```
 # Change to some working directory of choice
 export WORK_DIR='path_to_working_directory'
-if [ ! -d "$$WORK_DIR" ]; then
+if [ ! -d "$WORK_DIR" ]; then
   mkdir $WORK_DIR
 fi
 cd $WORK_DIR
