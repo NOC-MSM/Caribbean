@@ -3,7 +3,7 @@ NEMO regional configuration of the Caribbean
 
 The following code was used in this configuration:
 
-svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk@8395
+svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
 
 The initial conditions and boundary data can be downloaded from JASMIN:
 
