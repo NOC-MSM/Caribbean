@@ -3,7 +3,7 @@ NEMO regional configuration of the Caribbean
 
 The following code was used in this configuration:
 
-svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk@8395
+svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
 
 The initial conditions and boundary data can be downloaded from JASMIN:
 
@@ -14,7 +14,7 @@ NB This recipe has be written with the ARCHER HPC INTEL environment in mind.
 ```
 # Change to some working directory of choice
 export WORK_DIR='path_to_working_directory'
-if [ ! -d "$$WORK_DIR" ]; then
+if [ ! -d "$WORK_DIR" ]; then
   mkdir $WORK_DIR
 fi
 cd $WORK_DIR
@@ -40,7 +40,7 @@ if [ ! -d "$XIOS_DIR" ]; then
   mkdir $XIOS_DIR
 fi
 cd $XIOS_DIR
-svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios@1242 xios
+svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/trunk@1242 xios
 cd xios
 cp $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/arch_xios/* ./arch
 ./make_xios --full --prod --arch XC30_ARCHER --netcdf_lib netcdf4_par --job 4
@@ -75,7 +75,7 @@ That should be enough to produce a valid executable. Now to copy the forcing dat
 
 ```
 cd Caribbean/EXP00
-wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/config/
+wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 ```
 
 And finally link the XIOS binary to the configuration directory.
