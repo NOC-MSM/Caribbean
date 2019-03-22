@@ -1,0 +1,116 @@
+#!/bin/bash
+# Lightweight script to set up the Caribbean Config
+ 
+display_usage() { 
+   echo
+   echo "  Auto-Config: Caribbean"
+   echo "  **********************"
+   echo
+   echo "  usage: ${0##*/} -w path_to_install_nemo -x path_to_intall_xios"
+   echo
+   echo "  flags:  -w full path to where nemo will be installed"
+   echo "          -x full path to where xios will be installed"
+   echo
+   exit 1
+	} 
+# if less than two arguments supplied, display usage 
+	if [  $# -le 3 ] 
+	then 
+		display_usage
+		exit 1
+	fi 
+# if less than two arguments supplied, display usage 
+	if [  $# -ge 5 ] 
+	then 
+		display_usage
+		exit 1
+	fi 
+# check whether user had supplied -h or --help . If yes display usage 
+	if [[ ( $# == "--help") ||  $# == "-h" ]] 
+	then 
+		display_usage
+		exit 0
+	fi 
+
+while getopts w:x: option
+  do
+  case "${option}"
+  in
+  w) export WORK_DIR=${OPTARG};;
+  x) export XIOS_DIR=${OPTARG};;
+  esac
+done
+
+if [ ${WORK_DIR:0:1} != "/" ]; then
+  echo "WORK_DIR must use full path"
+  exit 1
+fi
+
+if [ ${XIOS_DIR:0:1} != "/" ]; then
+  echo "XIOS_DIR must use full path"
+  exit 1
+fi
+
+# Change to some working directory of choice
+if [ ! -d "$WORK_DIR" ]; then
+  mkdir $WORK_DIR
+fi
+cd $WORK_DIR
+
+# Checkout the NEMO code from the SVN Paris repository 
+echo "Checking out NEMO repository"
+svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395 nemo
+cd nemo/NEMOGCM/CONFIG
+
+# Checkout configuration directory structure
+git init .
+echo "Checking out Caribbean git repository"
+git clone git@github.com:NOC-MSM/Caribbean.git
+
+# Add it to the configuration list
+echo "Caribbean OPA_SRC" >> cfg.txt
+
+echo $XIOS_DIR
+# Choose an appropriate directory for your XIOS installation
+if [ ! -d "$XIOS_DIR" ]; then
+  mkdir $XIOS_DIR
+fi
+cd $XIOS_DIR
+echo $PWD
+echo "Checking out xios repository"
+svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/trunk@1242 xios
+cd xios
+cp $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/arch_xios/* ./arch
+echo "Compiling xios"
+./make_xios --full --prod --arch XC30_ARCHER --netcdf_lib netcdf4_par --job 4
+
+# Let's update the path to xios
+export XIOS_DIR=$XIOS_DIR/xios
+
+module swap PrgEnv-cray PrgEnv-intel
+module load cray-hdf5-parallel
+module load cray-netcdf-hdf5parallel
+
+cd $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
+cp ARCH/* ../../ARCH
+
+echo "Compiling nemo Caribbean Config"
+cd ../
+./makenemo -n Caribbean -m XC_ARCHER_Intel -j 4
+
+cd Caribbean/EXP00
+echo "Gathering forcing data"
+wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
+
+ln -s $XIOS_DIR/bin/xios_server.exe xios_server.exe
+echo
+echo "  Auto-Config: Caribbean"
+echo "  **********************"
+echo
+echo "  To run the Caribbean Configuration:"
+echo
+echo "  - update the runscript.pbs accordingly "
+echo "      (project code, nodes, modules, etc)"
+echo
+echo "  - submit via the qsub command"
+echo    
