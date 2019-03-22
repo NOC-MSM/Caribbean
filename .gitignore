@@ -46,3 +46,6 @@ nemo
 output.namelist.dyn
 stdouterr
 stdouterr_xios
+opa
+time.step
+solver.stat
