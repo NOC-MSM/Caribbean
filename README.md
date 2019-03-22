@@ -20,15 +20,15 @@ fi
 cd $WORK_DIR
 
 # Checkout the NEMO code from the SVN Paris repository 
-svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk@8395
-cd trunk/NEMOGCM/CONFIGS
+svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395 nemo
+cd nemo/NEMOGCM/CONFIG
 
 # Checkout configuration directory structure
 git init .
 git clone git@github.com:NOC-MSM/Caribbean.git
 
 # Add it to the configuration list
-echo "Caribbean OPA" >> cfgs.txt
+echo "Caribbean OPA_SRC" >> cfg.txt
 ```
 
 At this point you can checkout and compile XIOS or use a version you already have. If you're starting from scratch:
@@ -40,11 +40,10 @@ if [ ! -d "$XIOS_DIR" ]; then
   mkdir $XIOS_DIR
 fi
 cd $XIOS_DIR
-svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios@1242
+svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios@1242 xios
 cd xios
-mv $WORK_DIR/trunk/NEMOGCM/CONFIGS/arch_xios/* ./arch
-rm -rf $WORK_DIR/trunk/NEMOGCM/CONFIGS/arch_xios
-./make_xios --full --prod --arch XC30_ARCHER_Intel --netcdf_lib netcdf4_par --job 4
+cp $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/arch_xios/* ./arch
+./make_xios --full --prod --arch XC30_ARCHER --netcdf_lib netcdf4_par --job 4
 
 # Let's update the path to xios
 export XIOS_DIR=$XIOS_DIR/xios
@@ -61,9 +60,8 @@ module load cray-netcdf-hdf5parallel
 Next, compile the NEMO code itself. First we copy the arch files into the appropriate directory.
 
 ```
-cd $WORK_DIR/trunk/NEMOGCM/CONFIGS/Caribbean
-mv ARCH/* ../ARCH
-rm -rf ARCH
+cd $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
+cp ARCH/* ../../ARCH
 ```
 
 NB while ```$XIOS_DIR``` is in the current environment if you ever compile in a new session ```$XIOS_DIR``` will have to be redefined as ```../ARCH/arch-XC_ARCHER_Intel.fcm``` use this environment variable.
