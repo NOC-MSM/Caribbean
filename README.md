@@ -40,7 +40,7 @@ if [ ! -d "$XIOS_DIR" ]; then
   mkdir $XIOS_DIR
 fi
 cd $XIOS_DIR
-svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios@1242 xios
+svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/trunk@1242 xios
 cd xios
 cp $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/arch_xios/* ./arch
 ./make_xios --full --prod --arch XC30_ARCHER --netcdf_lib netcdf4_par --job 4
@@ -75,7 +75,7 @@ That should be enough to produce a valid executable. Now to copy the forcing dat
 
 ```
 cd Caribbean/EXP00
-wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/config/
+wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 ```
 
 And finally link the XIOS binary to the configuration directory.
