@@ -10,6 +10,10 @@
 #PBS -j oe
 #PBS -r n
 
+module load PrgEnv-intel
+module load cray-hdf5-parallel
+module load cray-netcdf-hdf5parallel
+
 export PBS_O_WORKDIR=$(readlink -f $PBS_O_WORKDIR)
 # Change to the direcotry that the job was submitted from
 cd $PBS_O_WORKDIR
