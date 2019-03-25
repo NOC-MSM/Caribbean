@@ -105,6 +105,7 @@ echo "Gathering forcing data"
 wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 
 ln -s $XIOS_DIR/bin/xios_server.exe xios_server.exe
+mkdir restarts
 echo
 echo "  Auto-Config: Caribbean"
 echo "  **********************"
