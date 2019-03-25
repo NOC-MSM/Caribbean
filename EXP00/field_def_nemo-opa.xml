@@ -108,109 +108,109 @@
       <field_group id="Tides_T" grid_ref="grid_T_2D" operation="once" >
          <!-- tidal composante -->
         
-	 <field id="SAamp"        long_name="SA Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="SAphase"      long_name="SA Elevation harmonic Phase"                                  unit="degree"   />
+	 <field id="SAamp_ssh"        long_name="SA Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="SApha_ssh"      long_name="SA Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="SSAamp"        long_name="SSA Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="SSAphase"      long_name="SSA Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="SSAamp_ssh"        long_name="SSA Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="SSApha_ssh"      long_name="SSA Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="Mmamp"        long_name="MM Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="Mmphase"      long_name="MM Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="Mmamp_ssh"        long_name="MM Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="Mmpha_ssh"      long_name="MM Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="Mfamp"        long_name="MF Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="Mfphase"      long_name="MF Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="Mfamp_ssh"        long_name="MF Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="Mfpha_ssh"      long_name="MF Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="MTMamp"        long_name="MTM Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="MTMphase"      long_name="MTM Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="MTMamp_ssh"        long_name="MTM Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="MTMpha_ssh"      long_name="MTM Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="MSFamp"        long_name="MSF Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="MSFphase"      long_name="MSF Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="MSFamp_ssh"        long_name="MSF Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="MSFpha_ssh"      long_name="MSF Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="MSQMamp"        long_name="MSQM Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="MSQMphase"      long_name="MSQM Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="MSQMamp_ssh"        long_name="MSQM Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="MSQMpha_ssh"      long_name="MSQM Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="K1amp"        long_name="K1 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="K1phase"      long_name="K1 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="K1amp_ssh"        long_name="K1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="K1pha_ssh"      long_name="K1 Elevation harmonic Phase"                                  unit="degree"   />
                                                                            
-         <field id="O1amp_ssh"        long_name="O1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="O1amp_ssh_ssh"        long_name="O1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="O1pha_ssh"      long_name="O1 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="Q1amp"        long_name="Q1 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="Q1phase"      long_name="Q1 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="Q1amp_ssh"        long_name="Q1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="Q1pha_ssh"      long_name="Q1 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="P1amp"        long_name="P1 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="P1phase"      long_name="P1 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="P1amp_ssh"        long_name="P1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="P1pha_ssh"      long_name="P1 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="S1amp"        long_name="S1 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="S1phase"      long_name="S1 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="S1amp_ssh"        long_name="S1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="S1pha_ssh"      long_name="S1 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="J1amp"        long_name="J1 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="J1phase"      long_name="J1 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="J1amp_ssh"        long_name="J1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="J1pha_ssh"      long_name="J1 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="M2amp"        long_name="M2 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="M2phase"      long_name="M2 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="M2amp_ssh"        long_name="M2 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="M2pha_ssh"      long_name="M2 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="N2amp"        long_name="N2 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="N2phase"      long_name="N2 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="N2amp_ssh"        long_name="N2 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="N2pha_ssh"      long_name="N2 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="S2amp"        long_name="S2 Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="S2phase"      long_name="S2 Elevation harmonic Phase"                                  unit="degree"   />
+         <field id="S2amp_ssh"        long_name="S2 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="S2pha_ssh"      long_name="S2 Elevation harmonic Phase"                                  unit="degree"   />
 
-         <field id="K2amp"       long_name="K2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="K2phase"     long_name="K2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="K2amp_ssh"       long_name="K2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="K2pha_ssh"     long_name="K2 Elevation harmonic Phase"                                 unit="degree"   />
 
-         <field id="L2amp"       long_name="L2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="L2phase"     long_name="L2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="L2amp_ssh"       long_name="L2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="L2pha_ssh"     long_name="L2 Elevation harmonic Phase"                                 unit="degree"   />
 
-         <field id="T2amp"       long_name="T2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="T2phase"     long_name="T2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="T2amp_ssh"       long_name="T2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="T2pha_ssh"     long_name="T2 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
-         <field id="R2amp"       long_name="R2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="R2phase"     long_name="R2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="R2amp_ssh"       long_name="R2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="R2pha_ssh"     long_name="R2 Elevation harmonic Phase"                                 unit="degree"   />
          
                                                                                           
-         <field id="MU2amp"       long_name="MU2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="MU2phase"     long_name="MU2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="MU2amp_ssh"       long_name="MU2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="MU2pha_ssh"     long_name="MU2 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
-         <field id="NU2amp"       long_name="NU2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="NU2phase"     long_name="NU2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="NU2amp_ssh"       long_name="NU2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="NU2pha_ssh"     long_name="NU2 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
-         <field id="2N2amp"       long_name="2N2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="2N2phase"     long_name="2N2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="2N2amp_ssh"       long_name="2N2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="2N2pha_ssh"     long_name="2N2 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
-         <field id="MKS2amp"       long_name="MKS2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="MKS2phase"     long_name="MKS2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="MKS2amp_ssh"       long_name="MKS2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="MKS2pha_ssh"     long_name="MKS2 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
-         <field id="LA2amp"       long_name="LA2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="LA2phase"     long_name="LA2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="LA2amp_ssh"       long_name="LA2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="LA2pha_ssh"     long_name="LA2 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
-         <field id="EPS2amp"       long_name="EPS2 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="EPS2phase"     long_name="EPS2 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="EPS2amp_ssh"       long_name="EPS2 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="EPS2pha_ssh"     long_name="EPS2 Elevation harmonic Phase"                                 unit="degree"   />
          
 
-         <field id="M3amp"       long_name="M3 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="M3phase"     long_name="M3 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="M3amp_ssh"       long_name="M3 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="M3pha_ssh"     long_name="M3 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="M4amp"       long_name="M4 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="M4phase"     long_name="M4 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="M4amp_ssh"       long_name="M4 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="M4pha_ssh"     long_name="M4 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="M6amp"       long_name="M6 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="M6phase"     long_name="M6 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="M6amp_ssh"       long_name="M6 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="M6pha_ssh"     long_name="M6 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="M8amp"       long_name="M8 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="M8phase"     long_name="M8 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="M8amp_ssh"       long_name="M8 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="M8pha_ssh"     long_name="M8 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="N4amp"       long_name="N4 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="N4phase"     long_name="N4 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="N4amp_ssh"       long_name="N4 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="N4pha_ssh"     long_name="N4 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="S4amp"       long_name="S4 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="S4phase"     long_name="S4 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="S4amp_ssh"       long_name="S4 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="S4pha_ssh"     long_name="S4 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="MN4amp"       long_name="MN4 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="MN4phase"     long_name="MN4 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="MN4amp_ssh"       long_name="MN4 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="MN4pha_ssh"     long_name="MN4 Elevation harmonic Phase"                                 unit="degree"   />
          
-         <field id="MS4amp"       long_name="MS4 Elevation harmonic Amplitude"                             unit="m"        />
-         <field id="MS4phase"     long_name="MS4 Elevation harmonic Phase"                                 unit="degree"   />
+         <field id="MS4amp_ssh"       long_name="MS4 Elevation harmonic Amplitude"                             unit="m"        />
+         <field id="MS4pha_ssh"     long_name="MS4 Elevation harmonic Phase"                                 unit="degree"   />
                                                                                                    
       </field_group>
 	 
