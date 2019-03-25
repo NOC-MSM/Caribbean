@@ -132,7 +132,7 @@
          <field id="K1amp_ssh"        long_name="K1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="K1pha_ssh"      long_name="K1 Elevation harmonic Phase"                                  unit="degree"   />
                                                                            
-         <field id="O1amp_ssh_ssh"        long_name="O1 Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="O1amp_ssh"        long_name="O1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="O1pha_ssh"      long_name="O1 Elevation harmonic Phase"                                  unit="degree"   />
 
          <field id="Q1amp_ssh"        long_name="Q1 Elevation harmonic Amplitude"                              unit="m"        />

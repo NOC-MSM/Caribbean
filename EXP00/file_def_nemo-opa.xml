@@ -32,7 +32,7 @@
           
           <field field_ref="K1amp_ssh"         name="K1amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="K1pha_ssh"       name="K1pha_ssh"     operation="instant" enabled=".TRUE." />
-          <field field_ref="O1amp_ssh_ssh"         name="O1amp_ssh_ssh"       operation="instant" enabled=".TRUE." />
+          <field field_ref="O1amp_ssh"         name="O1amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="O1pha_ssh"       name="O1pha_ssh"     operation="instant" enabled=".TRUE." />
           <field field_ref="Q1amp_ssh"         name="Q1amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="Q1pha_ssh"       name="Q1pha_ssh"     operation="instant" enabled=".TRUE." />
