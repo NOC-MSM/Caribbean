@@ -7,7 +7,7 @@ svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
 
 The initial conditions and boundary data can be downloaded from JASMIN:
 
-*thredds server here
+http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 
 NB This recipe has be written with the ARCHER HPC INTEL environment in mind.
 
@@ -78,10 +78,11 @@ cd Caribbean/EXP00
 wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 ```
 
-And finally link the XIOS binary to the configuration directory.
+And finally link the XIOS binary to the configuration directory and create a restarts directory.
 
 ```
 ln -s $XIOS_DIR/bin/xios_server.exe xios_server.exe
+mkdir restarts
 ```
 
 Edit and run the ```run_script.pbs``` script in ```../EXP00``` accordingly (namely enter a valid project code) and submit to the queue: ```qsub run_script.pbs```
