@@ -14,44 +14,84 @@
       <file_group id="1h" output_freq="1h"  output_level="10" enabled=".TRUE."/> <!-- 1h files -->                     
       <file_group id="tidal_harmonics" output_freq="1h"  output_level="10" enabled=".TRUE."> <!-- 1d files -->
         <file id="tidalanalysis.grid_T" name="harmonic_grid_T" description="ocean T grid variables"  enabled=".TRUE.">
-          <field field_ref="M2amp"         name="M2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="M2phase"       name="M2phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="S2amp"         name="S2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="S2phase"       name="S2phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="N2amp"         name="N2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="N2phase"       name="N2phase"     operation="instant" enabled=".TRUE." />
+
+          <field field_ref="SAamp"         name="SAamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="SAphase"       name="SAphase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="SSAamp"         name="SSAamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="SSAphase"       name="SSAphase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="Mmamp"         name="Mmamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="Mmphase"       name="Mmphase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="Mfamp"         name="Mfamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="Mfphase"       name="Mfphase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="MTMamp"         name="MTMamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="MTMphase"       name="MTMphase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="MSFamp"         name="MSFamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="MSFphase"       name="MSFphase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="MSQMamp"         name="MSQMamp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="MSQMphase"       name="MSQMphase"     operation="instant" enabled=".TRUE." />
+          
           <field field_ref="K1amp"         name="K1amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="K1phase"       name="K1phase"     operation="instant" enabled=".TRUE." />
           <field field_ref="O1amp"         name="O1amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="O1phase"       name="O1phase"     operation="instant" enabled=".TRUE." />
           <field field_ref="Q1amp"         name="Q1amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="Q1phase"       name="Q1phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="K2amp"         name="K2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="K2phase"       name="K2phase"     operation="instant" enabled=".TRUE." />
           <field field_ref="P1amp"         name="P1amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="P1phase"       name="P1phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="M4amp"         name="M4amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="M4phase"       name="M4phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="MS4amp"         name="MS4amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="MS4phase"       name="MS4phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="MN4amp"         name="MN4amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="MN4phase"       name="MN4phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="Mfamp"         name="Mfamp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="Mfphase"       name="Mfphase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="Mmamp"         name="Mmamp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="Mmphase"       name="Mmphase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="T2amp"         name="T2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="T2phase"       name="T2phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="L2amp"         name="L2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="L2phase"       name="L2phase"     operation="instant" enabled=".TRUE." />
           <field field_ref="S1amp"         name="S1amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="S1phase"       name="S1phase"     operation="instant" enabled=".TRUE." />
-          <field field_ref="2N2amp"         name="2N2amp"       operation="instant" enabled=".TRUE." />
-          <field field_ref="2N2phase"       name="2N2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="J1amp"         name="J1amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="J1phase"       name="J1phase"     operation="instant" enabled=".TRUE." />
+          
+
+          <field field_ref="M2amp"         name="M2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="M2phase"       name="M2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="N2amp"         name="N2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="N2phase"       name="N2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="S2amp"         name="S2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="S2phase"       name="S2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="K2amp"         name="K2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="K2phase"       name="K2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="L2amp"         name="L2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="L2phase"       name="L2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="T2amp"         name="T2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="T2phase"       name="T2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="R2amp"         name="R2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="R2phase"       name="R2phase"     operation="instant" enabled=".TRUE." />
+          
+          
+
           <field field_ref="MU2amp"         name="MU2amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="MU2phase"       name="MU2phase"     operation="instant" enabled=".TRUE." />
           <field field_ref="NU2amp"         name="NU2amp"       operation="instant" enabled=".TRUE." />
           <field field_ref="NU2phase"       name="NU2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="2N2amp"         name="2N2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="2N2phase"       name="2N2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="MKS2amp"         name="MKS2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="MKS2phase"       name="MKS2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="LA2amp"         name="LA2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="LA2phase"       name="LA2phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="EPS2amp"         name="EPS2amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="EPS2phase"       name="EPS2phase"     operation="instant" enabled=".TRUE." />
+
+
+          <field field_ref="M3amp"         name="M3amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="M3phase"       name="M3phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="M4amp"         name="M4amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="M4phase"       name="M4phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="M6amp"         name="M6amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="M6phase"       name="M6phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="M8amp"         name="M8amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="M8phase"       name="M8phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="N4amp"         name="N4amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="N4phase"       name="N4phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="S4amp"         name="S4amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="S4phase"       name="S4phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="MN4amp"         name="MN4amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="MN4phase"       name="MN4phase"     operation="instant" enabled=".TRUE." />
+          <field field_ref="MS4amp"         name="MS4amp"       operation="instant" enabled=".TRUE." />
+          <field field_ref="MS4phase"       name="MS4phase"     operation="instant" enabled=".TRUE." />
+          
         </file>
       </file_group>
 

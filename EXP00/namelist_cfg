@@ -5,7 +5,7 @@
 !-----------------------------------------------------------------------
    cn_exp      =  "Caribbean"  !  experience name
    nn_it000    =  1            !  first time step 
-   nn_itend    =  3600       !  last  time step (std 1 day = 240) (for dt = 6 min, so 240*dt = 1 day)
+   nn_itend    =  240 ! 3600       !  last  time step (std 1 day = 240) (for dt = 6 min, so 240*dt = 1 day)
    nn_date0    =  20090101     !  date at nit_0000 (format yyyymmdd) used if ln_rstart=F or (ln_rstart=T and nn_rstctl=0 or 1)
    nn_time0    =       0   !  initial time of day in hhmm
    nn_leapy    =       1   !  Leap year calendar (1) or not (0)
@@ -189,7 +189,7 @@
 !-----------------------------------------------------------------------
    ln_tide     = .true.
    ln_tide_pot = .false.     !  use tidal potential forcing
-   ln_tide_ramp= .true.
+   ln_tide_ramp= .false.
    rdttideramp =    10.     !
    dn_love_number = 0.69    ! Love number
    clname(1)     =   'M2'   !  name of constituent - all tidal components must be set in namelist_cfg
@@ -454,7 +454,7 @@
 &nam_diaharm   !   Harmonic analysis of tidal constituents ('key_diaharm')
 !-----------------------------------------------------------------------
     nit000_han = 1 !43201     ! First time step used for harmonic analysis
-    nitend_han = 43680 !86400      ! Last time step used for harmonic analysis
+    nitend_han = 240 ! 43680 !86400      ! Last time step used for harmonic analysis
     nstep_han  = 5         ! Time step frequency for harmonic analysis
     tname(1)   = 'M2'      ! Name of tidal constituents
     tname(2)   = 'K2'
