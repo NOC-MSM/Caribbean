@@ -252,6 +252,10 @@
    filtide      = 'TIDE/Caribbean_bdytide_rotT_'         !  file name root of tidal forcing files
    ln_bdytide_2ddta = .false. 
    ln_bdytide_conj  = .false.                   !
+                                          ! Harmonic analysis with restart from polcoms
+  ln_harm_ana_compute=.true.          ! Compute the harmonic analysis at the last time step
+  ln_harm_ana_store=.true.                 ! Store the harmonic analysis at the last time step for restart
+  ln_harmana_read=.false.                    ! Read harmonic analysis from a restart
 /
 !-----------------------------------------------------------------------
 &nambfr        !   bottom friction
