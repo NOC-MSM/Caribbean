@@ -237,6 +237,10 @@ CONTAINS
       IF( lk_diadct  )   CALL dia_dct( kstp )         ! Transports
                          CALL dia_ar5( kstp )         ! ar5 diag
       IF( lk_diaharm )   CALL dia_harm( kstp )        ! Tidal harmonic analysis
+      ! NB - new harmonic analysis 
+      IF( lk_diaharm_fast )                           &
+            &            CALL dia_harm_fast( kstp )   ! Tidal harmonic analysis - restart and faster version
+      ! END NB
                          CALL dia_wri( kstp )         ! ocean model: outputs
       !
       IF( ln_crs     )   CALL crs_fld       ( kstp )  ! ocean model: online field coarsening & output
@@ -297,14 +301,6 @@ CONTAINS
       IF(.NOT.ln_linssh) CALL dom_vvl_sf_swp( kstp )  ! swap of vertical scale factors
       !
       IF( ln_diahsb        )   CALL dia_hsb( kstp )         ! - ML - global conservation diagnostics
-
-#if defined key_harm_ana
-!--- NB Restart for the tidal harmonic analysis
-!! NEED TO BE DONE BEFORE RESTART
-      IF( ln_harm_ana_store   )   CALL harm_ana( kstp )        ! Harmonic analysis of tides 
-!--- END NB -----------------------------------
-# endif
-
 
 !!gm : This does not only concern the dynamics ==>>> add a new title
 !!gm2: why ouput restart before AGRIF update?

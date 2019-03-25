@@ -86,6 +86,9 @@ MODULE step_oce
    USE diahth           ! thermocline depth                (dia_hth routine)
    USE diahsb           ! heat, salt and volume budgets    (dia_hsb routine)
    USE diaharm
+!--- NB for restart hamonic analysis
+   USE diaharm_fast     ! harmonic analysis of tides (harm_ana routine) 
+!--- END NB -----------------------------------
    USE diacfl
    USE flo_oce          ! floats variables
    USE floats           ! floats computation               (flo_stp routine)
@@ -100,13 +103,6 @@ MODULE step_oce
    USE prtctl           ! Print control                    (prt_ctl routine)
 
    USE diaobs           ! Observation operator
-
-#if defined key_harm_ana
-!--- NB for restart hamonic analysis
-   USE harmonic_analysis ! harmonic analysis of tides (harm_ana routine) 
-   USE bdytides          ! harmonic analysis of tides (harm_ana routine) 
-!--- END NB -----------------------------------
-# endif
 
    USE in_out_manager   ! I/O manager
    USE iom              !

@@ -191,7 +191,8 @@
    ln_tide_pot = .false.     !  use tidal potential forcing
    ln_tide_ramp= .true.
    rdttideramp =    10.     !
-   clname(1)     =   'M2'   !  name of constituent
+   dn_love_number = 0.69    ! Love number
+   clname(1)     =   'M2'   !  name of constituent - all tidal components must be set in namelist_cfg
    clname(2)     =   'K2'
    clname(3)     =   'S2'
    clname(4)     =   'N2'
@@ -252,10 +253,6 @@
    filtide      = 'TIDE/Caribbean_bdytide_rotT_'         !  file name root of tidal forcing files
    ln_bdytide_2ddta = .false. 
    ln_bdytide_conj  = .false.                   !
-                                          ! Harmonic analysis with restart from polcoms
-  ln_harm_ana_compute=.true.          ! Compute the harmonic analysis at the last time step
-  ln_harm_ana_store=.true.                 ! Store the harmonic analysis at the last time step for restart
-  ln_harmana_read=.false.                    ! Read harmonic analysis from a restart
 /
 !-----------------------------------------------------------------------
 &nambfr        !   bottom friction
@@ -462,6 +459,21 @@
     tname(1)   = 'M2'      ! Name of tidal constituents
     tname(2)   = 'K2'
     tname(3)   = 'S2'
+/
+!-----------------------------------------------------------------------
+&nam_diaharm_fast   !   Harmonic analysis of tidal constituents               ("key_diaharm_fast")
+!-----------------------------------------------------------------------
+    ln_diaharm_store = .true.
+    ln_diaharm_compute = .true.
+    ln_diaharm_read_restart = .false.
+    ln_ana_ssh   = .true.
+    ln_ana_uvbar = .false.
+    ln_ana_bfric = .false.
+    ln_ana_rho  = .false.
+    ln_ana_uv3d = .false.
+    ln_ana_w3d  = .false.
+    tname(1) = 'O1',
+    tname(2) = 'M2',
 /
 !-----------------------------------------------------------------------
 &namdct        ! transports through sections
