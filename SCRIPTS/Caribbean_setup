@@ -57,6 +57,12 @@ if [ ! -d "$WORK_DIR" ]; then
 fi
 cd $WORK_DIR
 
+echo "Make sure that the correct modules are loaded"
+
+module load PrgEnv-intel
+module load cray-hdf5-parallel
+module load cray-netcdf-hdf5parallel
+
 # Checkout the NEMO code from the SVN Paris repository 
 echo "Checking out NEMO repository"
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395 nemo
@@ -86,10 +92,6 @@ echo "Compiling xios"
 
 # Let's update the path to xios
 export XIOS_DIR=$XIOS_DIR/xios
-
-module swap PrgEnv-cray PrgEnv-intel
-module load cray-hdf5-parallel
-module load cray-netcdf-hdf5parallel
 
 cd $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
 cp ARCH/* ../../ARCH
