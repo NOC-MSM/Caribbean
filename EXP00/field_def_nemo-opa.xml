@@ -847,7 +847,7 @@
        <field id="ssh_flt"       long_name="filtered contribution to ssh (dynspg_flt)"        unit="m"       grid_ref="grid_T_2D" />
        <field id="w0"            long_name="surface vertical velocity"                        unit="m/s"     grid_ref="grid_T_2D" />
        <field id="pw0_exp"       long_name="surface pressure flux due to ssh"                 unit="W/s^2"   grid_ref="grid_T_2D" />
-       <field id="pw0_flt"       long_name="surface pressure flux due to filteredssh"        unit="W/s^2"   grid_ref="grid_T_2D" />
+       <field id="pw0_flt"       long_name="surface pressure flux due to filtered ssh"        unit="W/s^2"   grid_ref="grid_T_2D" />
        <field id="ketrd_keg"     long_name="ke-trend: KE gradient         or hor. adv."       unit="W/s^3"                        />
        <field id="ketrd_rvo"     long_name="ke-trend: relative  vorticity or metric term"     unit="W/s^3"                        />
        <field id="ketrd_pvo"     long_name="ke-trend: planetary vorticity"                    unit="W/s^3"                        />

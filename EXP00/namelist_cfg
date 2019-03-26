@@ -470,7 +470,7 @@
     tname(4) =  'MF' 
     tname(5) =  'MTM'
     tname(6) =  'MSF' 
-    tname 7) =  'MSQM'
+    tname(7) =  'MSQM'
 !
 ! Diurnal Tides
     tname(8)  =  'K1'   
