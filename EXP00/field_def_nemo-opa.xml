@@ -215,86 +215,31 @@
       </field_group>
 	 
       <field_group id="Tides_U" grid_ref="grid_U_2D" operation="once" >
-         <field id="M2x_u"        long_name="M2 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="M2y_u"        long_name="M2 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="S2x_u"        long_name="S2 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="S2y_u"        long_name="S2 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="N2x_u"        long_name="N2 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="N2y_u"        long_name="N2 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="K1x_u"        long_name="K1 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="K1y_u"        long_name="K1 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="O1x_u"        long_name="O1 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="O1y_u"        long_name="O1 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="Q1x_u"        long_name="Q1 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="Q1y_u"        long_name="Q1 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="M4x_u"        long_name="M4 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="M4y_u"        long_name="M4 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="K2x_u"        long_name="K2 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="K2y_u"        long_name="K2 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="P1x_u"        long_name="P1 current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="P1y_u"        long_name="P1 current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="Mfx_u"        long_name="Mf current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="Mfy_u"        long_name="Mf current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="Mmx_u"        long_name="Mm current barotrope along i-axis harmonic real part "        unit="m/s"      />
-         <field id="Mmy_u"        long_name="Mm current barotrope along i-axis harmonic imaginary part "   unit="m/s"      />
+
       
-         <field id="M2amp_u2D"      long_name="M2 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="M2phase_u2D"    long_name="M2 U barotropic harmonic Phase"                               unit="degree"   />
+	 <field id="SAamp_u2D"        long_name="SA U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="SApha_u2D"      long_name="SA U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="S2amp_u2D"      long_name="S2 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="S2phase_u2D"    long_name="S2 U barotropic harmonic Phase"                               unit="degree"   />
+         <field id="SSAamp_u2D"        long_name="SSA U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="SSApha_u2D"      long_name="SSA U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="N2amp_u2D"      long_name="N2 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="N2phase_u2D"    long_name="N2 U barotropic harmonic Phase"                               unit="degree"   />
+         <field id="Mmamp_u2D"        long_name="MM U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="Mmpha_u2D"      long_name="MM U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="K1amp_u2D"      long_name="K1 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="K1phase_u2D"    long_name="K1 U barotropic harmonic Phase"                               unit="degree"   />
+         <field id="Mfamp_u2D"        long_name="MF U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="Mfpha_u2D"      long_name="MF U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="O1amp_u2D"      long_name="O1 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="O1phase_u2D"    long_name="O1 U barotropic harmonic Phase"                               unit="degree"   />
+         <field id="MTMamp_u2D"        long_name="MTM U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="MTMpha_u2D"      long_name="MTM U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="Q1amp_u2D"      long_name="Q1 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="Q1phase_u2D"    long_name="Q1 U barotropic harmonic Phase"                               unit="degree"   />
+         <field id="MSFamp_u2D"        long_name="MSF U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="MSFpha_u2D"      long_name="MSF U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="M4amp_u2D"      long_name="M4 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="M4phase_u2D"    long_name="M4 U barotropic harmonic Phase"                               unit="degree"   />
+         <field id="MSQMamp_u2D"        long_name="MSQM U barotropic harmonic Amplitude"                              unit="m"        />
+         <field id="MSQMpha_u2D"      long_name="MSQM U barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="MS4amp_u2D"      long_name="MS4 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="MS4phase_u2D"    long_name="MS4 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="MN4amp_u2D"      long_name="MN4 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="MN4phase_u2D"    long_name="MN4 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="K2amp_u2D"      long_name="K2 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="K2phase_u2D"    long_name="K2 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="P1amp_u2D"      long_name="P1 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="P1phase_u2D"    long_name="P1 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="Mfamp_u2D"      long_name="Mf U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="Mfphase_u2D"    long_name="Mf U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="Mmamp_u2D"      long_name="Mm U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="Mmphase_u2D"    long_name="Mm U barotropic harmonic Phase"                               unit="degree"   />
-         <field id="T2amp_u2D"      long_name="T2 U barotropic harmonic Amplitude"                           unit="m/s"      />
-
-         <field id="T2phase_u2D"    long_name="T2 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="L2amp_u2D"      long_name="L2 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="L2phase_u2D"    long_name="L2 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="S1amp_u2D"      long_name="S1 U barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="S1phase_u2D"    long_name="S1 U barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="2N2amp_u2D"     long_name="2N2 U barotropic harmonic Amplitude"                          unit="m/s"      />
-         <field id="2N2phase_u2D"   long_name="2N2 U barotropic harmonic Phase"                              unit="degree"   />
-
-         <field id="MU2amp_u2D"     long_name="MU2 U barotropic harmonic Amplitude"                          unit="m/s"      />
-         <field id="MU2phase_u2D"   long_name="MU2 U barotropic harmonic Phase"                              unit="degree"   />
-
-         <field id="NU2amp_u2D"     long_name="NU2 U barotropic harmonic Amplitude"                          unit="m/s"      />
-         <field id="NU2phase_u2D"   long_name="NU2 U barotropic harmonic Phase"                              unit="degree"   />
-
+	      
+	
       </field_group>
 	 
       <field_group id="Tides_V" grid_ref="grid_V_2D" operation="once" >
