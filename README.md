@@ -1,9 +1,9 @@
 # Caribbean
-NEMO regional configuration of the Caribbean
+NEMO V4.0 regional configuration of the Caribbean
 
 The following code was used in this configuration:
 
-svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
+svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/releases/release-4.0
 
 The initial conditions and boundary data can be downloaded from JASMIN:
 
@@ -20,15 +20,18 @@ fi
 cd $WORK_DIR
 
 # Checkout the NEMO code from the SVN Paris repository 
-svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395 nemo
-cd nemo/NEMOGCM/CONFIG
+svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/releases/release-4.0 nemo
+cd nemo/cfgs
 
 # Checkout configuration directory structure
 git init .
 git clone git@github.com:NOC-MSM/Caribbean.git
+cd Caribbean
+git checkout release-4.0
+cd ../
 
 # Add it to the configuration list
-echo "Caribbean OPA_SRC" >> cfg.txt
+echo "Caribbean OCE" >> work_cfgs.txt
 ```
 
 At this point you can checkout and compile XIOS or use a version you already have. If you're starting from scratch:
@@ -40,7 +43,7 @@ if [ ! -d "$XIOS_DIR" ]; then
   mkdir $XIOS_DIR
 fi
 cd $XIOS_DIR
-svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/trunk@1242 xios
+svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios-2.5 xios
 cd xios
 cp $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/arch_xios/* ./arch
 ./make_xios --full --prod --arch XC30_ARCHER --netcdf_lib netcdf4_par --job 4
