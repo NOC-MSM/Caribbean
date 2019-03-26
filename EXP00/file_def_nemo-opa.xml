@@ -14,7 +14,6 @@
       <file_group id="1h" output_freq="1h"  output_level="10" enabled=".TRUE."/> <!-- 1h files -->                     
       <file_group id="tidal_harmonics" output_freq="1h"  output_level="10" enabled=".TRUE."> <!-- 1d files -->
         <file id="tidalanalysis.grid_T" name="harmonic_grid_T" description="ocean T grid variables"  enabled=".TRUE.">
-
           <field field_ref="SAamp_ssh"         name="SAamp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="SApha_ssh"       name="SApha_ssh"     operation="instant" enabled=".TRUE." />
           <field field_ref="SSAamp_ssh"         name="SSAamp_ssh"       operation="instant" enabled=".TRUE." />
@@ -42,7 +41,6 @@
           <field field_ref="S1pha_ssh"       name="S1pha_ssh"     operation="instant" enabled=".TRUE." />
           <field field_ref="J1amp_ssh"         name="J1amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="J1pha_ssh"       name="J1pha_ssh"     operation="instant" enabled=".TRUE." />
-          
 
           <field field_ref="M2amp_ssh"         name="M2amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="M2pha_ssh"       name="M2pha_ssh"     operation="instant" enabled=".TRUE." />
@@ -58,8 +56,6 @@
           <field field_ref="T2pha_ssh"       name="T2pha_ssh"     operation="instant" enabled=".TRUE." />
           <field field_ref="R2amp_ssh"         name="R2amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="R2pha_ssh"       name="R2pha_ssh"     operation="instant" enabled=".TRUE." />
-          
-          
 
           <field field_ref="MU2amp_ssh"         name="MU2amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="MU2pha_ssh"       name="MU2pha_ssh"     operation="instant" enabled=".TRUE." />
@@ -73,7 +69,6 @@
           <field field_ref="LA2pha_ssh"       name="LA2pha_ssh"     operation="instant" enabled=".TRUE." />
           <field field_ref="EPS2amp_ssh"         name="EPS2amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="EPS2pha_ssh"       name="EPS2pha_ssh"     operation="instant" enabled=".TRUE." />
-
 
           <field field_ref="M3amp_ssh"         name="M3amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="M3pha_ssh"       name="M3pha_ssh"     operation="instant" enabled=".TRUE." />
@@ -91,7 +86,6 @@
           <field field_ref="MN4pha_ssh"       name="MN4pha_ssh"     operation="instant" enabled=".TRUE." />
           <field field_ref="MS4amp_ssh"         name="MS4amp_ssh"       operation="instant" enabled=".TRUE." />
           <field field_ref="MS4pha_ssh"       name="MS4pha_ssh"     operation="instant" enabled=".TRUE." />
-          
         </file>
       </file_group>
 
