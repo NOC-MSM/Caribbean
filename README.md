@@ -31,6 +31,14 @@ git clone git@github.com:NOC-MSM/Caribbean.git
 echo "Caribbean OPA_SRC" >> cfg.txt
 ```
 
+You can fold the ```make_xios``` command into a serial job. NB ```$NETCDF_DIR``` and ```$HDF5_DIR``` must be part of your environment. This should be the case if you've used ```modules``` to setup the netcdf and hdf5 e.g. 
+
+```
+module swap PrgEnv-cray PrgEnv-intel
+module load cray-hdf5-parallel
+module load cray-netcdf-hdf5parallel
+```
+
 At this point you can checkout and compile XIOS or use a version you already have. If you're starting from scratch:
 
 ```
@@ -47,14 +55,6 @@ cp $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/arch_xios/* ./arch
 
 # Let's update the path to xios
 export XIOS_DIR=$XIOS_DIR/xios
-```
-
-You can fold the ```make_xios``` command into a serial job. NB ```$NETCDF_DIR``` and ```$HDF5_DIR``` must be part of your environment. This should be the case if you've used ```modules``` to setup the netcdf and hdf5 e.g. 
-
-```
-module swap PrgEnv-cray PrgEnv-intel
-module load cray-hdf5-parallel
-module load cray-netcdf-hdf5parallel
 ```
 
 Next, compile the NEMO code itself. First we copy the arch files into the appropriate directory.
