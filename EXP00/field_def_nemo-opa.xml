@@ -52,10 +52,10 @@
 
          <field id="taubot"       long_name="bottom stress module"                                                    unit="N/m2" />
 
-         <field id="v2D"          long_name="sea surface height"             standard_name="sea_surface_height_above_geoid"             unit="m" />
-         <field id="v2D2"         long_name="square of sea surface height"   standard_name="square_of_sea_surface_height_above_geoid"   unit="m2" > v2D * v2D </field >
+         <field id="ssh"          long_name="sea surface height"             standard_name="sea_surface_height_above_geoid"             unit="m" />
+         <field id="ssh2"         long_name="square of sea surface height"   standard_name="square_of_sea_surface_height_above_geoid"   unit="m2" > ssh * ssh </field >
          <field id="wetdep"       long_name="wet depth"                      standard_name="wet_depth"                unit="m" />
-         <field id="v2Dmax"       long_name="max of sea surface height"   field_ref="v2D"   operation="maximum"                                  />
+         <field id="sshmax"       long_name="max of sea surface height"   field_ref="ssh"   operation="maximum"                                  />
 
          <field id="mldkz5"       long_name="Turbocline depth (Kz = 5e-4)"                       standard_name="ocean_mixed_layer_thickness_defined_by_vertical_tracer_diffusivity"                unit="m"          />
          <field id="mldr10_1"     long_name="Mixed Layer Depth (dsigma = 0.01 wrt 10m)"          standard_name="ocean_mixed_layer_thickness_defined_by_sigma_theta"                                unit="m"          />
@@ -94,11 +94,11 @@
 
          <!-- variables available with diaar5 -->
          <field id="botpres"      long_name="Sea Water Pressure at Sea Floor"   standard_name="sea_water_pressure_at_sea_floor"   unit="dbar" />
-         <field id="v2Ddyn"       long_name="dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid"     unit="m" />
-         <field id="v2Ddyn2"      long_name="square of dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid_squared"     unit="m2" > v2Ddyn * v2Ddyn </field>
+         <field id="sshdyn"       long_name="dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid"     unit="m" />
+         <field id="sshdyn2"      long_name="square of dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid_squared"     unit="m2" > ssh * ssh </field>
          <field id="tnpeo"      long_name="Tendency of ocean potential energy content"          unit="W/m2"                           />
 
-         <!-- variables available ln_linv2D=.FALSE. -->
+         <!-- variables available ln_linssh=.FALSE. -->
          <field id="tpt_dep"      long_name="T-point depth"                  standard_name="depth_below_geoid"   unit="m"   grid_ref="grid_T_3D" />
          <field id="e3tdef"       long_name="T-cell thickness deformation"                                       unit="%"   grid_ref="grid_T_3D" />
       </field_group>
@@ -361,7 +361,7 @@
          <field id="vwnd"         long_name="v component of wind"       unit="m/s"          grid_ref="grid_V_2D"    />
 
          <!-- * variable relative to atmospheric pressure forcing : available with ln_apr_dyn -->
-         <field id="v2D_ib"       long_name="Inverse barometer sea surface height"  standard_name="sea_surface_height_correction_due_to_air_pressure_at_low_frequency"   unit="m"        />
+         <field id="ssh_ib"       long_name="Inverse barometer sea surface height"  standard_name="sea_surface_height_correction_due_to_air_pressure_at_low_frequency"   unit="m"        />
 
          <!-- * variable related to ice shelf forcing * -->
          <field id="fwfisf"       long_name="Ice shelf melting"                             unit="kg/m2/s"  />
@@ -436,7 +436,7 @@
          <field id="sss_m"    unit="psu"  />
          <field id="ssu_m"    unit="m/s"  />
          <field id="ssv_m"    unit="m/s"  />
-         <field id="v2D_m"    unit="m"    />
+         <field id="ssh_m"    unit="m"    />
          <field id="e3t_m"    unit="m"    />
          <field id="frq_m"    unit="-"    />
 
@@ -587,9 +587,9 @@
 
       <field_group id="scalar"  grid_ref="grid_T_2D"  >
          <field id="voltot"     long_name="global total volume"                          standard_name="sea_water_volume"                               unit="m3"   />
-         <field id="v2Dtot"     long_name="global mean v2D"                              standard_name="global_average_sea_level_change"                unit="m"    />
-         <field id="v2Dsteric"  long_name="global mean v2D steric"                       standard_name="global_average_steric_sea_level_change"         unit="m"    />
-         <field id="v2Dthster"  long_name="global mean v2D thermosteric"                 standard_name="global_average_thermosteric_sea_level_change"   unit="m"    />
+         <field id="sshtot"     long_name="global mean ssh"                              standard_name="global_average_sea_level_change"                unit="m"    />
+         <field id="sshsteric"  long_name="global mean ssh steric"                       standard_name="global_average_steric_sea_level_change"         unit="m"    />
+         <field id="sshthster"  long_name="global mean ssh thermosteric"                 standard_name="global_average_thermosteric_sea_level_change"   unit="m"    />
          <field id="masstot"    long_name="global total mass"                            standard_name="sea_water_mass"                                 unit="kg"   />
          <field id="temptot"    long_name="global mean temperature"                      standard_name="sea_water_potential_temperature"                unit="degC" />
          <field id="saltot"     long_name="global mean salinity"                         standard_name="sea_water_salinity"                             unit="1e-3" />
@@ -601,14 +601,14 @@
          <field id="bgheatco"     long_name="drift in global mean heat content wrt timestep 1"                                                                                      unit="1.e20J"   />
          <field id="bgheatfx"     long_name="drift in global mean heat flux    wrt timestep 1"                                                                                      unit="W/m2"     />
          <field id="bgsaltco"     long_name="drift in global mean salt content wrt timestep 1"                                                                                      unit="1e-3*km3" />
-         <field id="bgvolv2D"     long_name="drift in global mean v2D volume wrt timestep 1"                                                                                        unit="km3"      />
+         <field id="bgvolssh"     long_name="drift in global mean ssh volume wrt timestep 1"                                                                                        unit="km3"      />
          <field id="bgvole3t"     long_name="drift in global mean volume variation (e3t) wrt timestep 1"                                                                            unit="km3"      />
          <field id="bgfrcvol"     long_name="global mean volume from forcing"                                                                                                       unit="km3"      />
          <field id="bgfrctem"     long_name="global mean heat content from forcing"                                                                                                 unit="1.e20J"   />
          <field id="bgfrchfx"     long_name="global mean heat flux from forcing"                                                                                                    unit="W/m2"     />
          <field id="bgfrcsal"     long_name="global mean salt content from forcing"                                                                                                 unit="1e-3*km3" />
-         <field id="bgmistem"     long_name="global mean temperature error due to free surface (linv2D true)"                                                                            unit="degC"     />
-         <field id="bgmissal"     long_name="global mean salinity error due to free surface (linv2D true)"                                                                               unit="1e-3"     />
+         <field id="bgmistem"     long_name="global mean temperature error due to free surface (linssh true)"                                                                            unit="degC"     />
+         <field id="bgmissal"     long_name="global mean salinity error due to free surface (linssh true)"                                                                               unit="1e-3"     />
       </field_group>
 
       <!-- variables available with key_float -->
@@ -746,8 +746,8 @@
        <field id="strd_ad"       long_name="salinity   -trend: advection"               standard_name="tendency_of_sea_water_salinity_due_to_advection"              unit="1e-3/s"                         > sqrt( strd_xad^2 + strd_yad^2 + strd_zad^2 ) </field>
        <field id="ttrd_totad"    long_name="temperature-trend: total advection"         standard_name="tendency_of_sea_water_salinity_due_to_advection"              unit="degC/s"                        />
        <field id="strd_totad"    long_name="salinity   -trend: total advection"         standard_name="tendency_of_sea_water_salinity_due_to_advection"              unit="1e-3/s"                        />
-       <field id="ttrd_sad"      long_name="temperature-trend: surface adv. (linv2D true)"                                                                                unit="degC/s"   grid_ref="grid_T_2D" />
-       <field id="strd_sad"      long_name="salinity   -trend: surface adv. (linv2D true)"                                                                                unit="1e-3/s"   grid_ref="grid_T_2D" />
+       <field id="ttrd_sad"      long_name="temperature-trend: surface adv. (linssh true)"                                                                                unit="degC/s"   grid_ref="grid_T_2D" />
+       <field id="strd_sad"      long_name="salinity   -trend: surface adv. (linssh true)"                                                                                unit="1e-3/s"   grid_ref="grid_T_2D" />
        <field id="ttrd_ldf"      long_name="temperature-trend: lateral  diffusion"      standard_name="tendency_of_sea_water_temperature_due_to_horizontal_mixing"   unit="degC/s"                        />
        <field id="strd_ldf"      long_name="salinity   -trend: lateral  diffusion"      standard_name="tendency_of_sea_water_salinity_due_to_horizontal_mixing"      unit="1e-3/s"                        />
        <field id="ttrd_zdf"      long_name="temperature-trend: vertical diffusion"      standard_name="tendency_of_sea_water_temperature_due_to_vertical_mixing"     unit="degC/s"                        />
@@ -844,10 +844,10 @@
        <field id="ketrd_spg"     long_name="ke-trend: surface     pressure gradient"          unit="W/s^3"                        />
        <field id="ketrd_spgexp"  long_name="ke-trend: surface pressure gradient (explicit)"   unit="W/s^3"                        />
        <field id="ketrd_spgflt"  long_name="ke-trend: surface pressure gradient (filter)"     unit="W/s^3"                        />
-       <field id="v2D_flt"       long_name="filtered contribution to v2D (dynspg_flt)"        unit="m"       grid_ref="grid_T_2D" />
+       <field id="ssh_flt"       long_name="filtered contribution to ssh (dynspg_flt)"        unit="m"       grid_ref="grid_T_2D" />
        <field id="w0"            long_name="surface vertical velocity"                        unit="m/s"     grid_ref="grid_T_2D" />
-       <field id="pw0_exp"       long_name="surface pressure flux due to v2D"                 unit="W/s^2"   grid_ref="grid_T_2D" />
-       <field id="pw0_flt"       long_name="surface pressure flux due to filtered v2D"        unit="W/s^2"   grid_ref="grid_T_2D" />
+       <field id="pw0_exp"       long_name="surface pressure flux due to ssh"                 unit="W/s^2"   grid_ref="grid_T_2D" />
+       <field id="pw0_flt"       long_name="surface pressure flux due to filteredssh"        unit="W/s^2"   grid_ref="grid_T_2D" />
        <field id="ketrd_keg"     long_name="ke-trend: KE gradient         or hor. adv."       unit="W/s^3"                        />
        <field id="ketrd_rvo"     long_name="ke-trend: relative  vorticity or metric term"     unit="W/s^3"                        />
        <field id="ketrd_pvo"     long_name="ke-trend: planetary vorticity"                    unit="W/s^3"                        />
@@ -866,7 +866,7 @@
        <field id="petrd_xad"     long_name="pe-trend: i-advection"                unit="W/m^3"                        />
        <field id="petrd_yad"     long_name="pe-trend: j-advection"                unit="W/m^3"                        />
        <field id="petrd_zad"     long_name="pe-trend: k-advection"                unit="W/m^3"                        />
-       <field id="petrd_sad"     long_name="pe-trend: surface adv. (linv2D true)"      unit="W/m^3"   grid_ref="grid_T_2D" />
+       <field id="petrd_sad"     long_name="pe-trend: surface adv. (linssh true)"      unit="W/m^3"   grid_ref="grid_T_2D" />
        <field id="petrd_ldf"     long_name="pe-trend: lateral  diffusion"         unit="W/m^3"                        />
        <field id="petrd_zdf"     long_name="pe-trend: vertical diffusion"         unit="W/m^3"                        />
        <field id="petrd_zdfp"    long_name="pe-trend: pure vert. diffusion"       unit="W/m^3"                        />
@@ -955,7 +955,7 @@
        <field field_ref="sst2"         name="tossq"    long_name="square_of_sea_surface_temperature"             />
        <field field_ref="sstgrad"      name="tosgrad"  long_name="module_of_sea_surface_temperature_gradient"    />
        <field field_ref="sss"          name="sos"      long_name="sea_surface_salinity"                          />
-       <field field_ref="v2D"          name="zos"      long_name="sea_surface_height_above_geoid"                />
+       <field field_ref="ssh"          name="zos"      long_name="sea_surface_height_above_geoid"                />
        <field field_ref="empmr"        name="wfo"      long_name="water_flux_into_sea_water"                     />
        <field field_ref="qsr"          name="rsntds"   long_name="surface_net_downward_shortwave_flux"           />
        <field field_ref="qt"           name="tohfls"   long_name="surface_net_downward_total_heat_flux"          />
@@ -982,7 +982,7 @@
        <field field_ref="sst"          name="tos"      long_name="sea_surface_temperature"                       />
        <field field_ref="sst2"         name="tossq"    long_name="square_of_sea_surface_temperature"             />
        <field field_ref="sss"          name="sos"      long_name="sea_surface_salinity"                          />
-       <field field_ref="v2D"          name="zos"      long_name="sea_surface_height_above_geoid"                />
+       <field field_ref="ssh"          name="zos"      long_name="sea_surface_height_above_geoid"                />
        <field field_ref="empmr"        name="wfo"      long_name="water_flux_into_sea_water"                     />
        <field field_ref="qsr"          name="rsntds"   long_name="surface_net_downward_shortwave_flux"           />
        <field field_ref="qt"           name="tohfls"   long_name="surface_net_downward_total_heat_flux"          />
@@ -1023,7 +1023,7 @@
        <field id="top_sal"            name="vosaline_top"  unit="psu"   />
        <field id="mid_sal"            name="vosaline_mid"  unit="psu"   />
        <field id="bot_sal"            name="vosaline_bot"  unit="psu"   />
-       <field id="v2Dnmasked"         name="sov2Deig"      unit="m"     />
+       <field id="sshnmasked"         name="sossheig"      unit="m"     />
     </field_group>
 
     <field_group  id="1h_grid_U_tmb" grid_ref="grid_U_2D" operation="instant">
@@ -1045,7 +1045,7 @@
        <field id="temper25h"         name="potential temperature 25h mean"    unit="degC" />
        <field id="tempis25h"         name="insitu temperature 25h mean"    unit="degC" />
        <field id="salin25h"          name="salinity 25h mean"                 unit="psu"  />
-       <field id="v2D25h"            name="sea surface height 25h mean"  grid_ref="grid_T_2D"      unit="m"    />
+       <field id="ssh25h"            name="sea surface height 25h mean"  grid_ref="grid_T_2D"      unit="m"    />
     </field_group>
 
     <field_group id="25h_grid_U" grid_ref="grid_U_3D" operation="instant" >
@@ -1074,7 +1074,7 @@
        <field field_ref="e3t"          name="e3t"      long_name="vertical scale factor"           />
        <field field_ref="sst"          name="tos"      long_name="sea_surface_temperature"         />
        <field field_ref="sss"          name="sos"      long_name="sea_surface_salinity"            />
-       <field field_ref="v2D"          name="zos"      long_name="sea_surface_height_above_geoid"  />
+       <field field_ref="ssh"          name="zos"      long_name="sea_surface_height_above_geoid"  />
 
        <!-- grid U -->
        <field field_ref="e3u"          name="e3u"     long_name="vertical scale factor"            />
