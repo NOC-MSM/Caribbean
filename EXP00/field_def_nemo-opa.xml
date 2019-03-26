@@ -1,7 +1,7 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
     <!-- $id$ -->
-    
-    <!-- 
+
+    <!--
 ============================================================================================================
 =                                  definition of all existing variables                                    =
 =                                            DO NOT CHANGE                                                 =
@@ -9,14 +9,14 @@
     -->
    <field_definition level="1" prec="4" operation="average" enabled=".TRUE." default_value="1.e20" > <!-- time step automaticaly defined -->
 
-    <!-- 
+    <!--
 ============================================================================================================
                                   Physical ocean model variables
 ============================================================================================================
     -->
 
       <!-- T grid -->
-      
+
       <field_group id="grid_T" grid_ref="grid_T_2D" >
          <field id="e3t"          long_name="T-cell thickness"   standard_name="cell_thickness"   unit="m"   grid_ref="grid_T_3D"/>
          <field id="e3t_surf"     long_name="T-cell thickness"   field_ref="e3t"  standard_name="cell_thickness"   unit="m"   grid_ref="grid_T_SFC"/>
@@ -42,20 +42,20 @@
          <field id="sst_wl"       long_name="Delta SST of warm layer"                                                                 unit="degC"     />
          <field id="sst_cs"       long_name="Delta SST of cool skin"                                                                  unit="degC"     />
 	 <field id="temp_3m"      long_name="temperature at 3m"                                                                       unit="degC"     />
-         
+
          <field id="sss"          long_name="sea surface salinity"             standard_name="sea_surface_salinity"   unit="1e-3" />
          <field id="sss2"         long_name="square of sea surface salinity"                                          unit="1e-6"  > sss * sss </field >
          <field id="sssmax"       long_name="max of sea surface salinity"   field_ref="sss"   operation="maximum"                 />
          <field id="sssmin"       long_name="min of sea surface salinity"   field_ref="sss"   operation="minimum"                 />
          <field id="sbs"          long_name="sea bottom salinity"                                                     unit="0.001" />
-         <field id="somint"       long_name="vertical integral of salinity times density"   standard_name="integral_wrt_depth_of_product_of_density_and_salinity"  unit="(kg m2) x (1e-3)" /> 
+         <field id="somint"       long_name="vertical integral of salinity times density"   standard_name="integral_wrt_depth_of_product_of_density_and_salinity"  unit="(kg m2) x (1e-3)" />
 
-         <field id="taubot"       long_name="bottom stress module"                                                    unit="N/m2" /> 
+         <field id="taubot"       long_name="bottom stress module"                                                    unit="N/m2" />
 
-         <field id="ssh"          long_name="sea surface height"             standard_name="sea_surface_height_above_geoid"             unit="m" />
-         <field id="ssh2"         long_name="square of sea surface height"   standard_name="square_of_sea_surface_height_above_geoid"   unit="m2" > ssh * ssh </field >
+         <field id="v2D"          long_name="sea surface height"             standard_name="sea_surface_height_above_geoid"             unit="m" />
+         <field id="v2D2"         long_name="square of sea surface height"   standard_name="square_of_sea_surface_height_above_geoid"   unit="m2" > v2D * v2D </field >
          <field id="wetdep"       long_name="wet depth"                      standard_name="wet_depth"                unit="m" />
-         <field id="sshmax"       long_name="max of sea surface height"   field_ref="ssh"   operation="maximum"                                  />
+         <field id="v2Dmax"       long_name="max of sea surface height"   field_ref="v2D"   operation="maximum"                                  />
 
          <field id="mldkz5"       long_name="Turbocline depth (Kz = 5e-4)"                       standard_name="ocean_mixed_layer_thickness_defined_by_vertical_tracer_diffusivity"                unit="m"          />
          <field id="mldr10_1"     long_name="Mixed Layer Depth (dsigma = 0.01 wrt 10m)"          standard_name="ocean_mixed_layer_thickness_defined_by_sigma_theta"                                unit="m"          />
@@ -94,11 +94,11 @@
 
          <!-- variables available with diaar5 -->
          <field id="botpres"      long_name="Sea Water Pressure at Sea Floor"   standard_name="sea_water_pressure_at_sea_floor"   unit="dbar" />
-         <field id="sshdyn"       long_name="dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid"     unit="m" />
-         <field id="sshdyn2"      long_name="square of dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid_squared"     unit="m2" > sshdyn * sshdyn </field>
+         <field id="v2Ddyn"       long_name="dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid"     unit="m" />
+         <field id="v2Ddyn2"      long_name="square of dynamic sea surface height"     standard_name="dynamic_sea_surface_height_above_geoid_squared"     unit="m2" > v2Ddyn * v2Ddyn </field>
          <field id="tnpeo"      long_name="Tendency of ocean potential energy content"          unit="W/m2"                           />
 
-         <!-- variables available ln_linssh=.FALSE. -->
+         <!-- variables available ln_linv2D=.FALSE. -->
          <field id="tpt_dep"      long_name="T-point depth"                  standard_name="depth_below_geoid"   unit="m"   grid_ref="grid_T_3D" />
          <field id="e3tdef"       long_name="T-cell thickness deformation"                                       unit="%"   grid_ref="grid_T_3D" />
       </field_group>
@@ -107,226 +107,237 @@
 
       <field_group id="Tides_T" grid_ref="grid_T_2D" operation="once" >
          <!-- tidal composante -->
-        
-	 <field id="SAamp_ssh"        long_name="SA Elevation harmonic Amplitude"                              unit="m"        />
-         <field id="SApha_ssh"      long_name="SA Elevation harmonic Phase"                                  unit="degree"   />
 
+         <field id="SAamp_ssh"        long_name="SA Elevation harmonic Amplitude"                              unit="m"        />
+         <field id="SApha_ssh"      long_name="SA Elevation harmonic Phase"                                  unit="degree"   />
          <field id="SSAamp_ssh"        long_name="SSA Elevation harmonic Amplitude"                              unit="m"        />
          <field id="SSApha_ssh"      long_name="SSA Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="Mmamp_ssh"        long_name="MM Elevation harmonic Amplitude"                              unit="m"        />
          <field id="Mmpha_ssh"      long_name="MM Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="Mfamp_ssh"        long_name="MF Elevation harmonic Amplitude"                              unit="m"        />
          <field id="Mfpha_ssh"      long_name="MF Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="MTMamp_ssh"        long_name="MTM Elevation harmonic Amplitude"                              unit="m"        />
          <field id="MTMpha_ssh"      long_name="MTM Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="MSFamp_ssh"        long_name="MSF Elevation harmonic Amplitude"                              unit="m"        />
          <field id="MSFpha_ssh"      long_name="MSF Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="MSQMamp_ssh"        long_name="MSQM Elevation harmonic Amplitude"                              unit="m"        />
          <field id="MSQMpha_ssh"      long_name="MSQM Elevation harmonic Phase"                                  unit="degree"   />
 
          <field id="K1amp_ssh"        long_name="K1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="K1pha_ssh"      long_name="K1 Elevation harmonic Phase"                                  unit="degree"   />
-                                                                           
          <field id="O1amp_ssh"        long_name="O1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="O1pha_ssh"      long_name="O1 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="Q1amp_ssh"        long_name="Q1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="Q1pha_ssh"      long_name="Q1 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="P1amp_ssh"        long_name="P1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="P1pha_ssh"      long_name="P1 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="S1amp_ssh"        long_name="S1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="S1pha_ssh"      long_name="S1 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="J1amp_ssh"        long_name="J1 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="J1pha_ssh"      long_name="J1 Elevation harmonic Phase"                                  unit="degree"   />
 
          <field id="M2amp_ssh"        long_name="M2 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="M2pha_ssh"      long_name="M2 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="N2amp_ssh"        long_name="N2 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="N2pha_ssh"      long_name="N2 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="S2amp_ssh"        long_name="S2 Elevation harmonic Amplitude"                              unit="m"        />
          <field id="S2pha_ssh"      long_name="S2 Elevation harmonic Phase"                                  unit="degree"   />
-
          <field id="K2amp_ssh"       long_name="K2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="K2pha_ssh"     long_name="K2 Elevation harmonic Phase"                                 unit="degree"   />
-
          <field id="L2amp_ssh"       long_name="L2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="L2pha_ssh"     long_name="L2 Elevation harmonic Phase"                                 unit="degree"   />
-
          <field id="T2amp_ssh"       long_name="T2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="T2pha_ssh"     long_name="T2 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
          <field id="R2amp_ssh"       long_name="R2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="R2pha_ssh"     long_name="R2 Elevation harmonic Phase"                                 unit="degree"   />
-         
-                                                                                          
+
          <field id="MU2amp_ssh"       long_name="MU2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="MU2pha_ssh"     long_name="MU2 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
          <field id="NU2amp_ssh"       long_name="NU2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="NU2pha_ssh"     long_name="NU2 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
          <field id="2N2amp_ssh"       long_name="2N2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="2N2pha_ssh"     long_name="2N2 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
          <field id="MKS2amp_ssh"       long_name="MKS2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="MKS2pha_ssh"     long_name="MKS2 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
          <field id="LA2amp_ssh"       long_name="LA2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="LA2pha_ssh"     long_name="LA2 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
          <field id="EPS2amp_ssh"       long_name="EPS2 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="EPS2pha_ssh"     long_name="EPS2 Elevation harmonic Phase"                                 unit="degree"   />
-         
 
          <field id="M3amp_ssh"       long_name="M3 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="M3pha_ssh"     long_name="M3 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="M4amp_ssh"       long_name="M4 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="M4pha_ssh"     long_name="M4 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="M6amp_ssh"       long_name="M6 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="M6pha_ssh"     long_name="M6 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="M8amp_ssh"       long_name="M8 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="M8pha_ssh"     long_name="M8 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="N4amp_ssh"       long_name="N4 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="N4pha_ssh"     long_name="N4 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="S4amp_ssh"       long_name="S4 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="S4pha_ssh"     long_name="S4 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="MN4amp_ssh"       long_name="MN4 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="MN4pha_ssh"     long_name="MN4 Elevation harmonic Phase"                                 unit="degree"   />
-         
          <field id="MS4amp_ssh"       long_name="MS4 Elevation harmonic Amplitude"                             unit="m"        />
          <field id="MS4pha_ssh"     long_name="MS4 Elevation harmonic Phase"                                 unit="degree"   />
-                                                                                                   
+
       </field_group>
-	 
+
       <field_group id="Tides_U" grid_ref="grid_U_2D" operation="once" >
 
-      
-	 <field id="SAamp_u2D"        long_name="SA U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="SApha_u2D"      long_name="SA U barotropic harmonic Phase"                                  unit="degree"   />
+         <field id="SAamp_u2D"        long_name="SA U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="SApha_u2D"      long_name="SA U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="SSAamp_u2D"        long_name="SSA U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="SSApha_u2D"      long_name="SSA U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="Mmamp_u2D"        long_name="MM U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="Mmpha_u2D"      long_name="MM U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="Mfamp_u2D"        long_name="MF U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="Mfpha_u2D"      long_name="MF U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="MTMamp_u2D"        long_name="MTM U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="MTMpha_u2D"      long_name="MTM U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="MSFamp_u2D"        long_name="MSF U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="MSFpha_u2D"      long_name="MSF U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="MSQMamp_u2D"        long_name="MSQM U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="MSQMpha_u2D"      long_name="MSQM U baroptropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="SSAamp_u2D"        long_name="SSA U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="SSApha_u2D"      long_name="SSA U barotropic harmonic Phase"                                  unit="degree"   />
+         <field id="K1amp_u2D"        long_name="K1 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="K1pha_u2D"      long_name="K1 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="O1amp_u2D"        long_name="O1 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="O1pha_u2D"      long_name="O1 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="Q1amp_u2D"        long_name="Q1 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="Q1pha_u2D"      long_name="Q1 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="P1amp_u2D"        long_name="P1 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="P1pha_u2D"      long_name="P1 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="S1amp_u2D"        long_name="S1 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="S1pha_u2D"      long_name="S1 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="J1amp_u2D"        long_name="J1 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="J1pha_u2D"      long_name="J1 U baroptropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="Mmamp_u2D"        long_name="MM U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="Mmpha_u2D"      long_name="MM U barotropic harmonic Phase"                                  unit="degree"   />
+         <field id="M2amp_u2D"        long_name="M2 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="M2pha_u2D"      long_name="M2 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="N2amp_u2D"        long_name="N2 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="N2pha_u2D"      long_name="N2 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="S2amp_u2D"        long_name="S2 U baroptropic harmonic Amplitude"                              unit="m"        />
+         <field id="S2pha_u2D"      long_name="S2 U baroptropic harmonic Phase"                                  unit="degree"   />
+         <field id="K2amp_u2D"       long_name="K2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="K2pha_u2D"     long_name="K2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="L2amp_u2D"       long_name="L2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="L2pha_u2D"     long_name="L2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="T2amp_u2D"       long_name="T2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="T2pha_u2D"     long_name="T2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="R2amp_u2D"       long_name="R2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="R2pha_u2D"     long_name="R2 U baroptropic harmonic Phase"                                 unit="degree"   />
 
-         <field id="Mfamp_u2D"        long_name="MF U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="Mfpha_u2D"      long_name="MF U barotropic harmonic Phase"                                  unit="degree"   />
+         <field id="MU2amp_u2D"       long_name="MU2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="MU2pha_u2D"     long_name="MU2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="NU2amp_u2D"       long_name="NU2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="NU2pha_u2D"     long_name="NU2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="2N2amp_u2D"       long_name="2N2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="2N2pha_u2D"     long_name="2N2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="MKS2amp_u2D"       long_name="MKS2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="MKS2pha_u2D"     long_name="MKS2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="LA2amp_u2D"       long_name="LA2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="LA2pha_u2D"     long_name="LA2 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="EPS2amp_u2D"       long_name="EPS2 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="EPS2pha_u2D"     long_name="EPS2 U baroptropic harmonic Phase"                                 unit="degree"   />
 
-         <field id="MTMamp_u2D"        long_name="MTM U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="MTMpha_u2D"      long_name="MTM U barotropic harmonic Phase"                                  unit="degree"   />
-
-         <field id="MSFamp_u2D"        long_name="MSF U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="MSFpha_u2D"      long_name="MSF U barotropic harmonic Phase"                                  unit="degree"   />
-
-         <field id="MSQMamp_u2D"        long_name="MSQM U barotropic harmonic Amplitude"                              unit="m"        />
-         <field id="MSQMpha_u2D"      long_name="MSQM U barotropic harmonic Phase"                                  unit="degree"   />
-
-	      
-	
+         <field id="M3amp_u2D"       long_name="M3 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="M3pha_u2D"     long_name="M3 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="M4amp_u2D"       long_name="M4 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="M4pha_u2D"     long_name="M4 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="M6amp_u2D"       long_name="M6 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="M6pha_u2D"     long_name="M6 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="M8amp_u2D"       long_name="M8 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="M8pha_u2D"     long_name="M8 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="N4amp_u2D"       long_name="N4 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="N4pha_u2D"     long_name="N4 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="S4amp_u2D"       long_name="S4 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="S4pha_u2D"     long_name="S4 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="MN4amp_u2D"       long_name="MN4 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="MN4pha_u2D"     long_name="MN4 U baroptropic harmonic Phase"                                 unit="degree"   />
+         <field id="MS4amp_u2D"       long_name="MS4 U baroptropic harmonic Amplitude"                             unit="m"        />
+         <field id="MS4pha_u2D"     long_name="MS4 U baroptropic harmonic Phase"                                 unit="degree"   />
       </field_group>
-	 
+
       <field_group id="Tides_V" grid_ref="grid_V_2D" operation="once" >
-         <field id="M2x_v"        long_name="M2 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="M2y_v"        long_name="M2 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="S2x_v"        long_name="S2 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="S2y_v"        long_name="S2 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="N2x_v"        long_name="N2 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="N2y_v"        long_name="N2 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="K1x_v"        long_name="K1 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="K1y_v"        long_name="K1 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="O1x_v"        long_name="O1 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="O1y_v"        long_name="O1 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="Q1x_v"        long_name="Q1 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="Q1y_v"        long_name="Q1 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="M4x_v"        long_name="M4 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="M4y_v"        long_name="M4 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="K2x_v"        long_name="K2 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="K2y_v"        long_name="K2 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="P1x_v"        long_name="P1 current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="P1y_v"        long_name="P1 current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="Mfx_v"        long_name="Mf current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="Mfy_v"        long_name="Mf current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />
-         <field id="Mmx_v"        long_name="Mm current barotrope along j-axis harmonic real part "        unit="m/s"      />
-         <field id="Mmy_v"        long_name="Mm current barotrope along j-axis harmonic imaginary part "   unit="m/s"      />	 
 
-         <field id="M2amp_v2D"      long_name="M2 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="M2phase_v2D"    long_name="M2 V barotropic harmonic Phase"                               unit="degree"   />
+           <field id="SAamp_v2D"        long_name="SA V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="SApha_v2D"      long_name="SA V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="SSAamp_v2D"        long_name="SSA V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="SSApha_v2D"      long_name="SSA V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="Mmamp_v2D"        long_name="MM V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="Mmpha_v2D"      long_name="MM V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="Mfamp_v2D"        long_name="MF V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="Mfpha_v2D"      long_name="MF V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="MTMamp_v2D"        long_name="MTM V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="MTMpha_v2D"      long_name="MTM V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="MSFamp_v2D"        long_name="MSF V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="MSFpha_v2D"      long_name="MSF V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="MSQMamp_v2D"        long_name="MSQM V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="MSQMpha_v2D"      long_name="MSQM V barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="S2amp_v2D"      long_name="S2 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="S2phase_v2D"    long_name="S2 V barotropic harmonic Phase"                               unit="degree"   />
+           <field id="K1amp_v2D"        long_name="K1 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="K1pha_v2D"      long_name="K1 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="O1amp_v2D"        long_name="O1 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="O1pha_v2D"      long_name="O1 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="Q1amp_v2D"        long_name="Q1 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="Q1pha_v2D"      long_name="Q1 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="P1amp_v2D"        long_name="P1 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="P1pha_v2D"      long_name="P1 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="S1amp_v2D"        long_name="S1 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="S1pha_v2D"      long_name="S1 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="J1amp_v2D"        long_name="J1 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="J1pha_v2D"      long_name="J1 V barotropic harmonic Phase"                                  unit="degree"   />
 
-         <field id="N2amp_v2D"      long_name="N2 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="N2phase_v2D"    long_name="N2 V barotropic harmonic Phase"                               unit="degree"   />
+           <field id="M2amp_v2D"        long_name="M2 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="M2pha_v2D"      long_name="M2 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="N2amp_v2D"        long_name="N2 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="N2pha_v2D"      long_name="N2 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="S2amp_v2D"        long_name="S2 V barotropic harmonic Amplitude"                              unit="m"        />
+           <field id="S2pha_v2D"      long_name="S2 V barotropic harmonic Phase"                                  unit="degree"   />
+           <field id="K2amp_v2D"       long_name="K2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="K2pha_v2D"     long_name="K2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="L2amp_v2D"       long_name="L2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="L2pha_v2D"     long_name="L2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="T2amp_v2D"       long_name="T2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="T2pha_v2D"     long_name="T2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="R2amp_v2D"       long_name="R2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="R2pha_v2D"     long_name="R2 V barotropic harmonic Phase"                                 unit="degree"   />
 
-         <field id="K1amp_v2D"      long_name="K1 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="K1phase_v2D"    long_name="K1 V barotropic harmonic Phase"                               unit="degree"   />
+           <field id="MU2amp_v2D"       long_name="MU2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="MU2pha_v2D"     long_name="MU2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="NU2amp_v2D"       long_name="NU2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="NU2pha_v2D"     long_name="NU2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="2N2amp_v2D"       long_name="2N2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="2N2pha_v2D"     long_name="2N2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="MKS2amp_v2D"       long_name="MKS2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="MKS2pha_v2D"     long_name="MKS2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="LA2amp_v2D"       long_name="LA2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="LA2pha_v2D"     long_name="LA2 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="EPS2amp_v2D"       long_name="EPS2 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="EPS2pha_v2D"     long_name="EPS2 V barotropic harmonic Phase"                                 unit="degree"   />
 
-         <field id="O1amp_v2D"      long_name="O1 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="O1phase_v2D"    long_name="O1 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="Q1amp_v2D"      long_name="Q1 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="Q1phase_v2D"    long_name="Q1 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="M4amp_v2D"      long_name="M4 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="M4phase_v2D"    long_name="M4 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="MS4amp_v2D"      long_name="MS4 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="MS4phase_v2D"    long_name="MS4 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="MN4amp_v2D"      long_name="MN4 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="MN4phase_v2D"    long_name="MN4 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="K2amp_v2D"      long_name="K2 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="K2phase_v2D"    long_name="K2 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="P1amp_v2D"      long_name="P1 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="P1phase_v2D"    long_name="P1 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="Mfamp_v2D"      long_name="Mf V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="Mfphase_v2D"    long_name="Mf V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="Mmamp_v2D"      long_name="Mm V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="Mmphase_v2D"    long_name="Mm V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="T2amp_v2D"      long_name="T2 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="T2phase_v2D"    long_name="T2 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="L2amp_v2D"      long_name="L2 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="L2phase_v2D"    long_name="L2 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="S1amp_v2D"      long_name="S1 V barotropic harmonic Amplitude"                           unit="m/s"      />
-         <field id="S1phase_v2D"    long_name="S1 V barotropic harmonic Phase"                               unit="degree"   />
-
-         <field id="2N2amp_v2D"     long_name="2N2 V barotropic harmonic Amplitude"                          unit="m/s"      />
-         <field id="2N2phase_v2D"   long_name="2N2 V barotropic harmonic Phase"                              unit="degree"   />
-
-         <field id="MU2amp_v2D"     long_name="MU2 V barotropic harmonic Amplitude"                          unit="m/s"      />
-         <field id="MU2phase_v2D"   long_name="MU2 V barotropic harmonic Phase"                              unit="degree"   />
-
-         <field id="NU2amp_v2D"     long_name="NU2 V barotropic harmonic Amplitude"                          unit="m/s"      />
-         <field id="NU2phase_v2D"   long_name="NU2 V barotropic harmonic Phase"                              unit="degree"   />
+           <field id="M3amp_v2D"       long_name="M3 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="M3pha_v2D"     long_name="M3 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="M4amp_v2D"       long_name="M4 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="M4pha_v2D"     long_name="M4 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="M6amp_v2D"       long_name="M6 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="M6pha_v2D"     long_name="M6 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="M8amp_v2D"       long_name="M8 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="M8pha_v2D"     long_name="M8 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="N4amp_v2D"       long_name="N4 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="N4pha_v2D"     long_name="N4 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="S4amp_v2D"       long_name="S4 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="S4pha_v2D"     long_name="S4 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="MN4amp_v2D"       long_name="MN4 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="MN4pha_v2D"     long_name="MN4 V barotropic harmonic Phase"                                 unit="degree"   />
+           <field id="MS4amp_v2D"       long_name="MS4 V barotropic harmonic Amplitude"                             unit="m"        />
+           <field id="MS4pha_v2D"     long_name="MS4 V barotropic harmonic Phase"                                 unit="degree"   />
 
       </field_group>
 
       <!-- SBC -->
-      
+
       <field_group id="SBC" grid_ref="grid_T_2D" > <!-- time step automaticaly defined based on nn_fsbc -->
          <field id="empmr"        long_name="Net Upward Water Flux"                standard_name="water_flux_out_of_sea_ice_and_sea_water"                              unit="kg/m2/s"   />
          <field id="empbmr"       long_name="Net Upward Water Flux at pre. tstep"  standard_name="water_flux_out_of_sea_ice_and_sea_water"                              unit="kg/m2/s"   />
@@ -337,7 +348,7 @@
          <field id="snowpre"      long_name="Snow precipitation"                   standard_name="snowfall_flux"                                                        unit="kg/m2/s"   />
          <field id="runoffs"      long_name="River Runoffs"                        standard_name="water_flux_into_sea_water_from_rivers"                                unit="kg/m2/s"   />
          <field id="precip"       long_name="Total precipitation"                  standard_name="precipitation_flux"                                                   unit="kg/m2/s"   />
- 
+
          <field id="qt"           long_name="Net Downward Heat Flux"                standard_name="surface_downward_heat_flux_in_sea_water"                              unit="W/m2"                           />
          <field id="qns"          long_name="non solar Downward Heat Flux"                                                                                               unit="W/m2"                           />
          <field id="qsr"          long_name="Shortwave Radiation"                   standard_name="net_downward_shortwave_flux_at_sea_water_surface"                     unit="W/m2"                           />
@@ -348,9 +359,9 @@
          <field id="wspd"         long_name="wind speed module"                     standard_name="wind_speed"                                                           unit="m/s"                            />
          <field id="uwnd"         long_name="u component of wind"       unit="m/s"          grid_ref="grid_U_2D"     />
          <field id="vwnd"         long_name="v component of wind"       unit="m/s"          grid_ref="grid_V_2D"    />
-         
+
          <!-- * variable relative to atmospheric pressure forcing : available with ln_apr_dyn -->
-         <field id="ssh_ib"       long_name="Inverse barometer sea surface height"  standard_name="sea_surface_height_correction_due_to_air_pressure_at_low_frequency"   unit="m"        />
+         <field id="v2D_ib"       long_name="Inverse barometer sea surface height"  standard_name="sea_surface_height_correction_due_to_air_pressure_at_low_frequency"   unit="m"        />
 
          <!-- * variable related to ice shelf forcing * -->
          <field id="fwfisf"       long_name="Ice shelf melting"                             unit="kg/m2/s"  />
@@ -378,7 +389,7 @@
          <field id="taum_oce"     long_name="wind stress module over open ocean"           standard_name="magnitude_of_surface_downward_stress" unit="N/m2"  />
          <field id="qns_oce"      long_name="Downward non-solar heat flux"                                                                      unit="W/m2"  />
          <field id="qsr_oce"      long_name="Downward solar heat flux"                                                                          unit="W/m2"  />
-         <field id="qt_oce"       long_name="total flux at ocean surface"    standard_name="surface_downward_heat_flux_in_sea_water"            unit="W/m2"  />  
+         <field id="qt_oce"       long_name="total flux at ocean surface"    standard_name="surface_downward_heat_flux_in_sea_water"            unit="W/m2"  />
        <!-- available key_oasis3 -->
          <field id="snow_ao_cea"  long_name="Snow over ice-free ocean (cell average)"   standard_name="snowfall_flux"                             unit="kg/m2/s"  />
          <field id="snow_ai_cea"  long_name="Snow over sea-ice (cell average)"          standard_name="snowfall_flux"                             unit="kg/m2/s"  />
@@ -413,26 +424,26 @@
 
          <!-- ice field (nn_ice=1)  -->
          <field id="ice_cover"    long_name="Ice fraction"                                                 standard_name="sea_ice_area_fraction"                              unit="1"            />
-         
+
          <!-- dilution -->
          <field id="emp_x_sst"    long_name="Concentration/Dilution term on SST"                                                                                              unit="kg*degC/m2/s" />
-         <field id="emp_x_sss"    long_name="Concentration/Dilution term on SSS"                                                                                              unit="kg*1e-3/m2/s" />        
+         <field id="emp_x_sss"    long_name="Concentration/Dilution term on SSS"                                                                                              unit="kg*1e-3/m2/s" />
          <field id="rnf_x_sst"    long_name="Runoff term on SST"                                                                                                              unit="kg*degC/m2/s" />
          <field id="rnf_x_sss"    long_name="Runoff term on SSS"                                                                                                              unit="kg*1e-3/m2/s" />
-       
+
 	 <!-- sbcssm variables -->
          <field id="sst_m"    unit="degC" />
          <field id="sss_m"    unit="psu"  />
          <field id="ssu_m"    unit="m/s"  />
          <field id="ssv_m"    unit="m/s"  />
-         <field id="ssh_m"    unit="m"    />
+         <field id="v2D_m"    unit="m"    />
          <field id="e3t_m"    unit="m"    />
          <field id="frq_m"    unit="-"    />
 
       </field_group>
 
       <!-- U grid -->
-      
+
       <field_group id="grid_U"   grid_ref="grid_U_2D">
          <field id="e3u"          long_name="U-cell thickness"                                       standard_name="cell_thickness"              unit="m"          grid_ref="grid_U_3D" />
          <field id="e3u_0"        long_name="Initial U-cell thickness"                               standard_name="ref_cell_thickness"          unit="m"          grid_ref="grid_U_3D"/>
@@ -478,9 +489,9 @@
          <field id="udiff_heattr" long_name="ocean diffusion heat transport along i-axis"   standard_name="ocean_heat_x_transport_due_to_diffusion"         unit="W"                                />
          <field id="udiff_salttr" long_name="ocean diffusion salt transport along i-axis"   standard_name="ocean_salt_x_transport_due_to_diffusion"         unit="1e-3*kg/s"                                />
       </field_group>
-      
+
       <!-- V grid -->
-      
+
       <field_group id="grid_V"   grid_ref="grid_V_2D">
          <field id="e3v"          long_name="V-cell thickness"                                       standard_name="cell_thickness"              unit="m"          grid_ref="grid_V_3D" />
          <field id="e3v_0"        long_name="Initial V-cell thickness"                               standard_name="ref_cell_thickness"          unit="m"          grid_ref="grid_V_3D"/>
@@ -526,9 +537,9 @@
          <field id="vdiff_heattr" long_name="ocean diffusion heat transport along j-axis"   standard_name="ocean_heat_y_transport_due_to_diffusion"         unit="W"                                />
          <field id="vdiff_salttr" long_name="ocean diffusion salt transport along j-axis"   standard_name="ocean_salt_y_transport_due_to_diffusion"         unit="1e-3*kg/s"                        />
       </field_group>
-      
+
       <!-- W grid -->
-      
+
       <field_group id="grid_W" grid_ref="grid_W_3D">
          <field id="e3w"          long_name="W-cell thickness"                     standard_name="cell_thickness"              unit="m"    />
          <field id="woce"         long_name="ocean vertical velocity"              standard_name="upward_sea_water_velocity"   unit="m/s"  />
@@ -559,7 +570,7 @@
          <field id="pcmap_tmx"    long_name="power consumed by wave-driven mixing"  standard_name="vertically_integrated_power_consumption_by_wave_driven_mixing"   unit="W/m2"      grid_ref="grid_W_2D" />
          <field id="emix_tmx"     long_name="power density available for mixing"    standard_name="power_available_for_mixing_from_breaking_internal_waves"         unit="W/kg" />
 
-         <!-- variables available with diaar5 -->   
+         <!-- variables available with diaar5 -->
          <field id="w_masstr"     long_name="vertical mass transport"             standard_name="upward_ocean_mass_transport"             unit="kg/s"   />
          <field id="w_masstr2"    long_name="square of vertical mass transport"   standard_name="square_of_upward_ocean_mass_transport"   unit="kg2/s2" />
 
@@ -568,7 +579,7 @@
          <field id="aht2d_eiv"    long_name="EIV lateral eddy diffusivity"   standard_name="ocean_tracer_bolus_laplacian_diffusivity"   unit="m2/s"   grid_ref="grid_W_2D" />
 
       </field_group>
-        
+
       <!-- F grid -->
       <!-- f-eddy viscosity coefficients (ldfdyn) -->
       <field id="ahmf_2d"      long_name=" surface f-eddy viscosity coefficient"   unit="m2/s or m4/s" />
@@ -576,9 +587,9 @@
 
       <field_group id="scalar"  grid_ref="grid_T_2D"  >
          <field id="voltot"     long_name="global total volume"                          standard_name="sea_water_volume"                               unit="m3"   />
-         <field id="sshtot"     long_name="global mean ssh"                              standard_name="global_average_sea_level_change"                unit="m"    />
-         <field id="sshsteric"  long_name="global mean ssh steric"                       standard_name="global_average_steric_sea_level_change"         unit="m"    />
-         <field id="sshthster"  long_name="global mean ssh thermosteric"                 standard_name="global_average_thermosteric_sea_level_change"   unit="m"    />
+         <field id="v2Dtot"     long_name="global mean v2D"                              standard_name="global_average_sea_level_change"                unit="m"    />
+         <field id="v2Dsteric"  long_name="global mean v2D steric"                       standard_name="global_average_steric_sea_level_change"         unit="m"    />
+         <field id="v2Dthster"  long_name="global mean v2D thermosteric"                 standard_name="global_average_thermosteric_sea_level_change"   unit="m"    />
          <field id="masstot"    long_name="global total mass"                            standard_name="sea_water_mass"                                 unit="kg"   />
          <field id="temptot"    long_name="global mean temperature"                      standard_name="sea_water_potential_temperature"                unit="degC" />
          <field id="saltot"     long_name="global mean salinity"                         standard_name="sea_water_salinity"                             unit="1e-3" />
@@ -590,16 +601,16 @@
          <field id="bgheatco"     long_name="drift in global mean heat content wrt timestep 1"                                                                                      unit="1.e20J"   />
          <field id="bgheatfx"     long_name="drift in global mean heat flux    wrt timestep 1"                                                                                      unit="W/m2"     />
          <field id="bgsaltco"     long_name="drift in global mean salt content wrt timestep 1"                                                                                      unit="1e-3*km3" />
-         <field id="bgvolssh"     long_name="drift in global mean ssh volume wrt timestep 1"                                                                                        unit="km3"      />
+         <field id="bgvolv2D"     long_name="drift in global mean v2D volume wrt timestep 1"                                                                                        unit="km3"      />
          <field id="bgvole3t"     long_name="drift in global mean volume variation (e3t) wrt timestep 1"                                                                            unit="km3"      />
          <field id="bgfrcvol"     long_name="global mean volume from forcing"                                                                                                       unit="km3"      />
          <field id="bgfrctem"     long_name="global mean heat content from forcing"                                                                                                 unit="1.e20J"   />
          <field id="bgfrchfx"     long_name="global mean heat flux from forcing"                                                                                                    unit="W/m2"     />
          <field id="bgfrcsal"     long_name="global mean salt content from forcing"                                                                                                 unit="1e-3*km3" />
-         <field id="bgmistem"     long_name="global mean temperature error due to free surface (linssh true)"                                                                            unit="degC"     />
-         <field id="bgmissal"     long_name="global mean salinity error due to free surface (linssh true)"                                                                               unit="1e-3"     />
+         <field id="bgmistem"     long_name="global mean temperature error due to free surface (linv2D true)"                                                                            unit="degC"     />
+         <field id="bgmissal"     long_name="global mean salinity error due to free surface (linv2D true)"                                                                               unit="1e-3"     />
       </field_group>
-  
+
       <!-- variables available with key_float -->
 
       <field_group id="floatvar" grid_ref="grid_T_nfloat"  operation="instant" >
@@ -614,7 +625,7 @@
 
       <!-- variables available with iceberg trajectories -->
 
-      <field_group id="icbvar" domain_ref="grid_T"  > 
+      <field_group id="icbvar" domain_ref="grid_T"  >
          <field id="berg_melt"          long_name="icb melt rate of icebergs"                       unit="kg/m2/s"                    />
          <field id="berg_buoy_melt"     long_name="icb buoyancy component of iceberg melt rate"     unit="kg/m2/s"                    />
          <field id="berg_eros_melt"     long_name="icb erosion component of iceberg melt rate"      unit="kg/m2/s"                    />
@@ -630,8 +641,8 @@
          <field id="berg_stored_ice"    long_name="icb accumulated ice mass by class"               unit="kg"       axis_ref="icbcla" />
       </field_group>
 
-      <!-- Poleward transport : ptr -->     
-      <field_group id="diaptr" >  
+      <!-- Poleward transport : ptr -->
+      <field_group id="diaptr" >
          <field id="zomsfglo"          long_name="Meridional Stream-Function: Global"           unit="Sv"       grid_ref="gznl_W_3D" />
          <field id="zomsfatl"          long_name="Meridional Stream-Function: Atlantic"         unit="Sv"       grid_ref="gznl_W_3D" />
          <field id="zomsfpac"          long_name="Meridional Stream-Function: Pacific"          unit="Sv"       grid_ref="gznl_W_3D" />
@@ -701,10 +712,10 @@
           <field id="sopsteiv_atl"      long_name="Salt Transport from mesoscale eddy advection: Atlantic"           unit="Giga g/s"       grid_ref="gznl_T_2D" />
          <field id="sopsteiv_pac"      long_name="Salt Transport from mesoscale eddy advection: Pacific"            unit="Giga g/s"       grid_ref="gznl_T_2D" />
          <field id="sopsteiv_ind"      long_name="Salt Transport from mesoscale eddy advection: Indian"             unit="Giga g/s"       grid_ref="gznl_T_2D" />
-         <field id="sopsteiv_ipc"      long_name="Salt Transport from mesoscale eddy advection: Pacific+Indian"     unit="Giga g/s"       grid_ref="gznl_T_2D" />       
+         <field id="sopsteiv_ipc"      long_name="Salt Transport from mesoscale eddy advection: Pacific+Indian"     unit="Giga g/s"       grid_ref="gznl_T_2D" />
       </field_group>
 
-    <!-- 
+    <!--
 ============================================================================================================
                   Physical ocean model trend diagnostics : temperature, KE, PE, momentum
 ============================================================================================================
@@ -735,8 +746,8 @@
        <field id="strd_ad"       long_name="salinity   -trend: advection"               standard_name="tendency_of_sea_water_salinity_due_to_advection"              unit="1e-3/s"                         > sqrt( strd_xad^2 + strd_yad^2 + strd_zad^2 ) </field>
        <field id="ttrd_totad"    long_name="temperature-trend: total advection"         standard_name="tendency_of_sea_water_salinity_due_to_advection"              unit="degC/s"                        />
        <field id="strd_totad"    long_name="salinity   -trend: total advection"         standard_name="tendency_of_sea_water_salinity_due_to_advection"              unit="1e-3/s"                        />
-       <field id="ttrd_sad"      long_name="temperature-trend: surface adv. (linssh true)"                                                                                unit="degC/s"   grid_ref="grid_T_2D" />
-       <field id="strd_sad"      long_name="salinity   -trend: surface adv. (linssh true)"                                                                                unit="1e-3/s"   grid_ref="grid_T_2D" />
+       <field id="ttrd_sad"      long_name="temperature-trend: surface adv. (linv2D true)"                                                                                unit="degC/s"   grid_ref="grid_T_2D" />
+       <field id="strd_sad"      long_name="salinity   -trend: surface adv. (linv2D true)"                                                                                unit="1e-3/s"   grid_ref="grid_T_2D" />
        <field id="ttrd_ldf"      long_name="temperature-trend: lateral  diffusion"      standard_name="tendency_of_sea_water_temperature_due_to_horizontal_mixing"   unit="degC/s"                        />
        <field id="strd_ldf"      long_name="salinity   -trend: lateral  diffusion"      standard_name="tendency_of_sea_water_salinity_due_to_horizontal_mixing"      unit="1e-3/s"                        />
        <field id="ttrd_zdf"      long_name="temperature-trend: vertical diffusion"      standard_name="tendency_of_sea_water_temperature_due_to_vertical_mixing"     unit="degC/s"                        />
@@ -833,10 +844,10 @@
        <field id="ketrd_spg"     long_name="ke-trend: surface     pressure gradient"          unit="W/s^3"                        />
        <field id="ketrd_spgexp"  long_name="ke-trend: surface pressure gradient (explicit)"   unit="W/s^3"                        />
        <field id="ketrd_spgflt"  long_name="ke-trend: surface pressure gradient (filter)"     unit="W/s^3"                        />
-       <field id="ssh_flt"       long_name="filtered contribution to ssh (dynspg_flt)"        unit="m"       grid_ref="grid_T_2D" />
+       <field id="v2D_flt"       long_name="filtered contribution to v2D (dynspg_flt)"        unit="m"       grid_ref="grid_T_2D" />
        <field id="w0"            long_name="surface vertical velocity"                        unit="m/s"     grid_ref="grid_T_2D" />
-       <field id="pw0_exp"       long_name="surface pressure flux due to ssh"                 unit="W/s^2"   grid_ref="grid_T_2D" />
-       <field id="pw0_flt"       long_name="surface pressure flux due to filtered ssh"        unit="W/s^2"   grid_ref="grid_T_2D" />
+       <field id="pw0_exp"       long_name="surface pressure flux due to v2D"                 unit="W/s^2"   grid_ref="grid_T_2D" />
+       <field id="pw0_flt"       long_name="surface pressure flux due to filtered v2D"        unit="W/s^2"   grid_ref="grid_T_2D" />
        <field id="ketrd_keg"     long_name="ke-trend: KE gradient         or hor. adv."       unit="W/s^3"                        />
        <field id="ketrd_rvo"     long_name="ke-trend: relative  vorticity or metric term"     unit="W/s^3"                        />
        <field id="ketrd_pvo"     long_name="ke-trend: planetary vorticity"                    unit="W/s^3"                        />
@@ -845,17 +856,17 @@
        <field id="ketrd_ldf"     long_name="ke-trend: lateral   diffusion"                    unit="W/s^3"                        />
        <field id="ketrd_zdf"     long_name="ke-trend: vertical  diffusion"                    unit="W/s^3"                        />
        <field id="ketrd_tau"     long_name="ke-trend: wind stress "                           unit="W/s^3"   grid_ref="grid_T_2D" />
-       <field id="ketrd_bfr"     long_name="ke-trend: bottom friction (explicit)"             unit="W/s^3"                        />   
-       <field id="ketrd_bfri"    long_name="ke-trend: bottom friction (implicit)"             unit="W/s^3"                        />   
-       <field id="ketrd_atf"     long_name="ke-trend: asselin time filter trend"              unit="W/s^3"                        />  
+       <field id="ketrd_bfr"     long_name="ke-trend: bottom friction (explicit)"             unit="W/s^3"                        />
+       <field id="ketrd_bfri"    long_name="ke-trend: bottom friction (implicit)"             unit="W/s^3"                        />
+       <field id="ketrd_atf"     long_name="ke-trend: asselin time filter trend"              unit="W/s^3"                        />
        <field id="ketrd_convP2K" long_name="ke-trend: conversion (potential to kinetic)"      unit="W/s^3"                        />
-       <field id="KE"            long_name="kinetic energy: u(n)*u(n+1)/2"                    unit="W/s^2"                        />   
+       <field id="KE"            long_name="kinetic energy: u(n)*u(n+1)/2"                    unit="W/s^2"                        />
 
        <!-- variables available with ln_PE_trd -->
        <field id="petrd_xad"     long_name="pe-trend: i-advection"                unit="W/m^3"                        />
        <field id="petrd_yad"     long_name="pe-trend: j-advection"                unit="W/m^3"                        />
        <field id="petrd_zad"     long_name="pe-trend: k-advection"                unit="W/m^3"                        />
-       <field id="petrd_sad"     long_name="pe-trend: surface adv. (linssh true)"      unit="W/m^3"   grid_ref="grid_T_2D" />
+       <field id="petrd_sad"     long_name="pe-trend: surface adv. (linv2D true)"      unit="W/m^3"   grid_ref="grid_T_2D" />
        <field id="petrd_ldf"     long_name="pe-trend: lateral  diffusion"         unit="W/m^3"                        />
        <field id="petrd_zdf"     long_name="pe-trend: vertical diffusion"         unit="W/m^3"                        />
        <field id="petrd_zdfp"    long_name="pe-trend: pure vert. diffusion"       unit="W/m^3"                        />
@@ -866,9 +877,9 @@
        <field id="petrd_qsr"     long_name="pe-trend: solar penetr. heating"      unit="W/m^3"                        />
        <field id="petrd_bbc"     long_name="pe-trend: geothermal heating"         unit="W/m^3"                        />
        <field id="petrd_atf"     long_name="pe-trend: asselin time filter"        unit="W/m^3"                        />
-       <field id="PEanom"        long_name="potential energy anomaly"             unit="1"                            />   
-       <field id="alphaPE"       long_name="partial deriv. of PEanom wrt T"       unit="degC-1"                       />   
-       <field id="betaPE"        long_name="partial deriv. of PEanom wrt S"       unit="1e3"                          />   
+       <field id="PEanom"        long_name="potential energy anomaly"             unit="1"                            />
+       <field id="alphaPE"       long_name="partial deriv. of PEanom wrt T"       unit="degC-1"                       />
+       <field id="betaPE"        long_name="partial deriv. of PEanom wrt S"       unit="1e3"                          />
     </field_group>
 
     <field_group id="trendU" grid_ref="grid_U_3D">
@@ -885,10 +896,10 @@
        <field id="utrd_ldf"       long_name="i-trend: lateral   diffusion"                    unit="m/s^2"                        />
        <field id="utrd_zdf"       long_name="i-trend: vertical  diffusion"                    unit="m/s^2"                        />
        <field id="utrd_tau"       long_name="i-trend: wind stress "                           unit="m/s^2"   grid_ref="grid_U_2D" />
-       <field id="utrd_bfr"       long_name="i-trend: bottom friction (explicit)"             unit="m/s^2"                        />   
-       <field id="utrd_bfri"      long_name="i-trend: bottom friction (implicit)"             unit="m/s^2"                        />   
-       <field id="utrd_tot"       long_name="i-trend: total momentum trend before atf"        unit="m/s^2"                        />   
-       <field id="utrd_atf"       long_name="i-trend: asselin time filter trend"              unit="m/s^2"                        />   
+       <field id="utrd_bfr"       long_name="i-trend: bottom friction (explicit)"             unit="m/s^2"                        />
+       <field id="utrd_bfri"      long_name="i-trend: bottom friction (implicit)"             unit="m/s^2"                        />
+       <field id="utrd_tot"       long_name="i-trend: total momentum trend before atf"        unit="m/s^2"                        />
+       <field id="utrd_atf"       long_name="i-trend: asselin time filter trend"              unit="m/s^2"                        />
     </field_group>
 
     <field_group id="trendV" grid_ref="grid_V_3D">
@@ -905,14 +916,14 @@
        <field id="vtrd_ldf"       long_name="j-trend: lateral   diffusion"                    unit="m/s^2"                        />
        <field id="vtrd_zdf"       long_name="j-trend: vertical  diffusion"                    unit="m/s^2"                        />
        <field id="vtrd_tau"       long_name="j-trend: wind stress "                           unit="m/s^2"   grid_ref="grid_V_2D" />
-       <field id="vtrd_bfr"       long_name="j-trend: bottom friction (explicit)"             unit="m/s^2"                        />   
-       <field id="vtrd_bfri"      long_name="j-trend: bottom friction (implicit)"             unit="m/s^2"                        />   
-       <field id="vtrd_tot"       long_name="j-trend: total momentum trend before atf"        unit="m/s^2"                        />   
-       <field id="vtrd_atf"       long_name="j-trend: asselin time filter trend"              unit="m/s^2"                        />   
+       <field id="vtrd_bfr"       long_name="j-trend: bottom friction (explicit)"             unit="m/s^2"                        />
+       <field id="vtrd_bfri"      long_name="j-trend: bottom friction (implicit)"             unit="m/s^2"                        />
+       <field id="vtrd_tot"       long_name="j-trend: total momentum trend before atf"        unit="m/s^2"                        />
+       <field id="vtrd_atf"       long_name="j-trend: asselin time filter trend"              unit="m/s^2"                        />
     </field_group>
 
 
-    <!-- 
+    <!--
 ============================================================================================================
                                         Definitions for iodef_demo.xml
 ============================================================================================================
@@ -930,7 +941,7 @@
           <field field_ref="strd_iso_li"     name="osaltpmdiff"  />
           <field field_ref="strd_zdfp_li"    name="osaltdiff" />
     </field_group>
-    
+
     <field_group id="mooring" >
        <field field_ref="toce"         name="thetao"   long_name="sea_water_potential_temperature"      />
        <field field_ref="soce"         name="so"       long_name="sea_water_salinity"                   />
@@ -939,12 +950,12 @@
        <field field_ref="woce"         name="wo"       long_name="sea_water_z_velocity"                 />
        <field field_ref="avt"          name="difvho"   long_name="ocean_vertical_heat_diffusivity"      />
        <field field_ref="avm"          name="difvmo"   long_name="ocean_vertical_momentum_diffusivity"  />
-   
+
        <field field_ref="sst"          name="tos"      long_name="sea_surface_temperature"                       />
        <field field_ref="sst2"         name="tossq"    long_name="square_of_sea_surface_temperature"             />
        <field field_ref="sstgrad"      name="tosgrad"  long_name="module_of_sea_surface_temperature_gradient"    />
        <field field_ref="sss"          name="sos"      long_name="sea_surface_salinity"                          />
-       <field field_ref="ssh"          name="zos"      long_name="sea_surface_height_above_geoid"                />
+       <field field_ref="v2D"          name="zos"      long_name="sea_surface_height_above_geoid"                />
        <field field_ref="empmr"        name="wfo"      long_name="water_flux_into_sea_water"                     />
        <field field_ref="qsr"          name="rsntds"   long_name="surface_net_downward_shortwave_flux"           />
        <field field_ref="qt"           name="tohfls"   long_name="surface_net_downward_total_heat_flux"          />
@@ -971,7 +982,7 @@
        <field field_ref="sst"          name="tos"      long_name="sea_surface_temperature"                       />
        <field field_ref="sst2"         name="tossq"    long_name="square_of_sea_surface_temperature"             />
        <field field_ref="sss"          name="sos"      long_name="sea_surface_salinity"                          />
-       <field field_ref="ssh"          name="zos"      long_name="sea_surface_height_above_geoid"                />
+       <field field_ref="v2D"          name="zos"      long_name="sea_surface_height_above_geoid"                />
        <field field_ref="empmr"        name="wfo"      long_name="water_flux_into_sea_water"                     />
        <field field_ref="qsr"          name="rsntds"   long_name="surface_net_downward_shortwave_flux"           />
        <field field_ref="qt"           name="tohfls"   long_name="surface_net_downward_total_heat_flux"          />
@@ -987,19 +998,19 @@
        <field field_ref="depti"                                                                                  />
        <field field_ref="BLT"          name="blt"      long_name="Barrier Layer Thickness"                       />
     </field_group>
-    
+
     <field_group id="groupU" >
        <field field_ref="uoce"         name="uo"      long_name="sea_water_x_velocity"      />
        <field field_ref="ssu"          name="uos"     long_name="sea_surface_x_velocity"    />
        <field field_ref="utau"         name="tauuo"   long_name="surface_downward_x_stress" />
     </field_group>
-    
+
     <field_group id="groupV" >
        <field field_ref="voce"         name="vo"      long_name="sea_water_y_velocity"      />
        <field field_ref="ssv"          name="vos"     long_name="sea_surface_y_velocity"    />
        <field field_ref="vtau"         name="tauvo"   long_name="surface_downward_y_stress" />
     </field_group>
-    
+
     <field_group id="groupW" >
        <field field_ref="woce"         name="wo"       long_name="ocean vertical velocity"  />
     </field_group>
@@ -1012,7 +1023,7 @@
        <field id="top_sal"            name="vosaline_top"  unit="psu"   />
        <field id="mid_sal"            name="vosaline_mid"  unit="psu"   />
        <field id="bot_sal"            name="vosaline_bot"  unit="psu"   />
-       <field id="sshnmasked"         name="sossheig"      unit="m"     /> 
+       <field id="v2Dnmasked"         name="sov2Deig"      unit="m"     />
     </field_group>
 
     <field_group  id="1h_grid_U_tmb" grid_ref="grid_U_2D" operation="instant">
@@ -1034,7 +1045,7 @@
        <field id="temper25h"         name="potential temperature 25h mean"    unit="degC" />
        <field id="tempis25h"         name="insitu temperature 25h mean"    unit="degC" />
        <field id="salin25h"          name="salinity 25h mean"                 unit="psu"  />
-       <field id="ssh25h"            name="sea surface height 25h mean"  grid_ref="grid_T_2D"      unit="m"    />
+       <field id="v2D25h"            name="sea surface height 25h mean"  grid_ref="grid_T_2D"      unit="m"    />
     </field_group>
 
     <field_group id="25h_grid_U" grid_ref="grid_U_3D" operation="instant" >
@@ -1053,25 +1064,25 @@
        <field id="mxln25h"             name="mixing length 25h mean"             unit="m" />
     </field_group>
 
-     <!-- 
+     <!--
 ============================================================================================================
        -->
-     <!-- output variables for my configuration (example) --> 
- 
+     <!-- output variables for my configuration (example) -->
+
     <field_group id="myvarOCE" >
-       <!-- grid T --> 
+       <!-- grid T -->
        <field field_ref="e3t"          name="e3t"      long_name="vertical scale factor"           />
        <field field_ref="sst"          name="tos"      long_name="sea_surface_temperature"         />
        <field field_ref="sss"          name="sos"      long_name="sea_surface_salinity"            />
-       <field field_ref="ssh"          name="zos"      long_name="sea_surface_height_above_geoid"  />
-      
-       <!-- grid U --> 
+       <field field_ref="v2D"          name="zos"      long_name="sea_surface_height_above_geoid"  />
+
+       <!-- grid U -->
        <field field_ref="e3u"          name="e3u"     long_name="vertical scale factor"            />
        <field field_ref="ssu"          name="uos"     long_name="sea_surface_x_velocity"           />
-      
-       <!-- grid V --> 
+
+       <!-- grid V -->
        <field field_ref="e3v"          name="e3v"     long_name="vertical scale factor"            />
-       <field field_ref="ssv"          name="vos"     long_name="sea_surface_y_velocity"           />     
-    </field_group>    
+       <field field_ref="ssv"          name="vos"     long_name="sea_surface_y_velocity"           />
+    </field_group>
 
    </field_definition>
