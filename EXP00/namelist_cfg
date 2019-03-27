@@ -463,48 +463,50 @@
     ln_ana_uv3d = .false.
     ln_ana_w3d  = .false.
     ! Long Period Tides
-! Long Period Tides
-    tname(1) =  'SA'    
-    tname(2) =  'SSA'   
-    tname(3) =  'MM' 
-    tname(4) =  'MF' 
-    tname(5) =  'MTM'
-    tname(6) =  'MSF' 
-    tname(7) =  'MSQM'
+    tname(1) = 'M2'
+    tname(2) = 'O1'
+!! Long Period Tides
+!    tname(1) =  'SA'    
+!    tname(2) =  'SSA'   
+!    tname(3) =  'MM' 
+!    tname(4) =  'MF' 
+!    tname(5) =  'MTM'
+!    tname(6) =  'MSF' 
+!    tname(7) =  'MSQM'
+!!
+!! Diurnal Tides
+!    tname(8)  =  'K1'   
+!    tname(9)  =  'O1'   
+!    tname(10) =  'Q1'   
+!    tname(11) =  'P1'   
+!    tname(12) =  'S1'   
+!    tname(13) =  'J1'   
+!!
+!! Semi-Diurnal Tides
+!    tname(14) =  'M2'   
+!    tname(15) =  'N2'   
+!    tname(16) =  'S2'   
+!    tname(17) =  'K2'   
+!    tname(18) =  'L2'   
+!    tname(19) =  'T2' 
+!    tname(20) =  'R2'  
 !
-! Diurnal Tides
-    tname(8)  =  'K1'   
-    tname(9)  =  'O1'   
-    tname(10) =  'Q1'   
-    tname(11) =  'P1'   
-    tname(12) =  'S1'   
-    tname(13) =  'J1'   
-!
-! Semi-Diurnal Tides
-    tname(14) =  'M2'   
-    tname(15) =  'N2'   
-    tname(16) =  'S2'   
-    tname(17) =  'K2'   
-    tname(18) =  'L2'   
-    tname(19) =  'T2' 
-    tname(20) =  'R2'  
-
-    tname(21) =  'MU2' 
-    tname(22) =  'NU2' 
-    tname(23) =  '2N2'  
-    tname(24) =  'MKS2'
-    tname(25) =  'LA2' 
-    tname(26) =  'EPS2'
-!
-! Harmonic and others
-    tname(27) =  'M3'   
-    tname(28) =  'M4'   
-    tname(29) =  'M6'   
-    tname(30) =  'M8'   
-    tname(31) =  'N4'   
-    tname(32) =  'S4'   
-    tname(33) =  'MN4'  
-    tname(34) =  'MS4'  
+!    tname(21) =  'MU2' 
+!    tname(22) =  'NU2' 
+!    tname(23) =  '2N2'  
+!    tname(24) =  'MKS2'
+!    tname(25) =  'LA2' 
+!    tname(26) =  'EPS2'
+!!
+!! Harmonic and others
+!    tname(27) =  'M3'   
+!    tname(28) =  'M4'   
+!    tname(29) =  'M6'   
+!    tname(30) =  'M8'   
+!    tname(31) =  'N4'   
+!    tname(32) =  'S4'   
+!    tname(33) =  'MN4'  
+!    tname(34) =  'MS4'  
 /
 !-----------------------------------------------------------------------
 &namdct        ! transports through sections
