@@ -1,4 +1,4 @@
-# Caribbean
+# Caribbean (v0.1)
 NEMO regional configuration of the Caribbean
 
 The following code was used in this configuration:
@@ -9,7 +9,7 @@ The initial conditions and boundary data can be downloaded from JASMIN:
 
 http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 
-NB This recipe has be written with the ARCHER HPC INTEL environment in mind.
+NB This recipe has be written with the [ARCHER](https://www.archer.ac.uk) HPC INTEL environment in mind.
 
 ```
 # Change to some working directory of choice
