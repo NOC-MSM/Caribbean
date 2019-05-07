@@ -1,4 +1,4 @@
-# Caribbean (v0.1)
+# Caribbean
 NEMO regional configuration of the Caribbean
 
 The following code was used in this configuration:
