@@ -1,5 +1,16 @@
-# Caribbean
-NEMO regional configuration of the Caribbean
+************
+## Caribbean
+************
+
+This model configuration has been developed through the [Commonwealth Marine Economies Programme](http://projects.noc.ac.uk/cme-programme/)
+
+"Enabling safe and sustainable marine economies across Commonwealth Small Island Developing States". 
+
+The Commonwealth Marine Economies (CME) Programme was announced by the British Prime Minister in 2015 to help Commonwealth Small Island Developing States (SIDS) make the most of their natural maritime advantages, to enable sustainable economic growth and alleviate poverty.
+
+********************************************
+### NEMO regional configuration of the Caribbean
+********************************************
 
 The following code was used in this configuration:
 
