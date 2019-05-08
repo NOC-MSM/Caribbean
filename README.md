@@ -82,11 +82,17 @@ cd ../
 ./makenemo -n Caribbean -m XC_ARCHER_Intel -j 4
 ```
 
-That should be enough to produce a valid executable. Now to copy the forcing data from JASMIN. 
+That should be enough to produce a valid executable. Now to extract the forcing data (copy the attached tar ball to the EXP00 directory): 
 
 ```
 cd Caribbean/EXP00
-wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
+tar xvfz caribbean_netcdf_files.tar.gz
+```
+
+Copy files generated using the ERA5 script into `SBC`:
+
+```
+cp path_to_era5_files SBC
 ```
 
 And finally link the XIOS binary to the configuration directory and create a restarts directory.
