@@ -16,10 +16,6 @@ The following code was used in this configuration:
 
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
 
-The initial conditions and boundary data can be downloaded from JASMIN:
-
-http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
-
 NB This recipe has be written with the [ARCHER](https://www.archer.ac.uk) HPC INTEL environment in mind.
 
 ```
@@ -89,7 +85,7 @@ cd Caribbean/EXP00
 tar xvfz caribbean_netcdf_files.tar.gz
 ```
 
-Copy files generated using the ERA5 script into `SBC`:
+Copy files generated using the ERA5 script (`SCRIPTS/ERA5_gen.py`) into `./SBC`:
 
 ```
 cp path_to_era5_files SBC
