@@ -95,7 +95,7 @@ cd Caribbean/EXP00
 tar xvfz caribbean_netcdf_files.tar.gz
 ```
 
-Copy files generated using the ERA5 script (`SCRIPTS/ERA5_gen.py`) into `./SBC`:
+Copy files generated using the ERA5 script (`SCRIPTS/ERA5_gen.py`; see [ERA5-Forcing](SCRIPTS/ERA5-Forcing.md) for more details) into `./SBC`:
 
 ```
 cp path_to_era5_files SBC
