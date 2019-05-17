@@ -55,7 +55,7 @@ conda install scipy
 
 Then the python script should work. Edit the beginning of the file to define the path to the ERA5 input data and if necessary, change the start and end times.   The domain boundaries are set up for this particular configuration and interpolation weights, so should not be changed independently.   
 
- ---- > add python script here
+[ERA5_gen.py](ERA5_gen.py)
 
 After extracting the sub-region, the scripts loads all the file in memory and generates yearly file for NEMO, applying corrections when needed i.e. :
  * Beginning of the full time series is copied when the data are not present (before 6h for cumulated for example)
