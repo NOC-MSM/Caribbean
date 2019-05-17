@@ -12,9 +12,19 @@ The Commonwealth Marine Economies (CME) Programme was announced by the British P
 ## NEMO regional configuration of the Caribbean
 ********************************************
 
+### Model Summary
+
+The model grid has 1/12&deg; lat-lon resolution and 75 hybrid sigma-z-partial-step vertical levels. The domain covers  -4.91&deg;N to -31.56&deg;N, 100.17&deg;E to 54.92&deg;E.   For more details on the model parameters, bathymetry and external forcing, see Wilson, Harle and Wakelin (2019). "Development of a regional ocean model for the Caribbean", NOC Research and Consultancy Report No. XXXX, available from the [NERC Open Research Archive](www.nora.nerc.ac.uk).
+
+### Model Setup
+
 The following code was used in this configuration:
 
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
+
+The initial conditions and boundary data can be downloaded from JASMIN:
+
+http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
 
 NB This recipe has be written with the [ARCHER](https://www.archer.ac.uk) HPC INTEL environment in mind.
 
