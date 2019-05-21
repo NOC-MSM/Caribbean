@@ -22,7 +22,7 @@ The following code was used in this configuration:
 
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
 
-The initial conditions and boundary data can be accessed via the JASMIN storage facility (for those who have access), but 3 months of forcing data are provided with this release.
+The initial conditions and boundary data can be accessed via the JASMIN storage facility (for those who have access), but 3 months of data are provided with this release.
 
 NB This recipe has be written with the [ARCHER](https://www.archer.ac.uk) HPC INTEL environment in mind.
 
