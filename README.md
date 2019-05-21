@@ -22,9 +22,7 @@ The following code was used in this configuration:
 
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395
 
-The initial conditions and boundary data can be downloaded from JASMIN:
-
-http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
+The initial conditions and boundary data can be accessed via the JASMIN storage facility (for those who have access), but 3 months of forcing data are provided with this release.
 
 NB This recipe has be written with the [ARCHER](https://www.archer.ac.uk) HPC INTEL environment in mind.
 
@@ -36,13 +34,16 @@ if [ ! -d "$WORK_DIR" ]; then
 fi
 cd $WORK_DIR
 
-# Checkout the NEMO code from the SVN Paris repository 
+# Checkout the NEMO code from the SVN Paris repository
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395 nemo
 cd nemo/NEMOGCM/CONFIG
 
-# Checkout configuration directory structure
-git init .
-git clone git@github.com:NOC-MSM/Caribbean.git
+# Define the location of where the Caribbean configuration tarballs were downloaded
+export DOWNLOAD_DIR='path_to_download_directory'
+
+# copy configuration and its source code mods into correct locations before compilation
+pushd $DOWNLOAD_DIR; tar xvfz Caribbean-1.0.tar.gz; popd
+cp -a $DOWNLOAD_DIR/Caribbean-1.0 $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
 
 # Add it to the configuration list
 echo "Caribbean OPA_SRC" >> cfg.txt
@@ -92,7 +93,8 @@ That should be enough to produce a valid executable. Now to extract the forcing 
 
 ```
 cd Caribbean/EXP00
-tar xvfz caribbean_netcdf_files.tar.gz
+tar xvfz $DOWNLOAD_DIR/caribbean_netcdf_files.tar.gz
+
 ```
 
 Copy files generated using the ERA5 script (`SCRIPTS/ERA5_gen.py`; see [ERA5-Forcing](SCRIPTS/ERA5-Forcing.md) for more details) into `./SBC`:
