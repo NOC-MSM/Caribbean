@@ -16,6 +16,8 @@ The Commonwealth Marine Economies (CME) Programme was announced by the British P
 
 The model grid has 1/12&deg; lat-lon resolution and 75 hybrid sigma-z-partial-step vertical levels. The domain covers  -4.91&deg;N to -31.56&deg;N, 100.17&deg;E to 54.92&deg;E.   For more details on the model parameters, bathymetry and external forcing, see Wilson, Harle and Wakelin (2019). "Development of a regional ocean model for the Caribbean", NOC Research and Consultancy Report No. 65, available from the [NERC Open Research Archive](www.nora.nerc.ac.uk).
 
+The surface forcing data are taken from [ERA5](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels?tab=form) generated using Copernicus Climate Change Service information [2019].
+
 ### Model Setup
 
 The following code was used in this configuration:
@@ -102,11 +104,7 @@ tar xvfz $DOWNLOAD_DIR/caribbean_netcdf_files.tar.gz
 
 ```
 
-Copy files generated using the ERA5 script (`SCRIPTS/ERA5_gen.py`; see [ERA5-Forcing](SCRIPTS/ERA5-Forcing.md) for more details) into `./SBC`:
-
-```
-cp path_to_era5_files SBC
-```
+If addtional surface forcing data are required files can be generated using the ERA5 script (`$WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/SCRIPTS/ERA5_gen.py`; see [ERA5-Forcing](SCRIPTS/ERA5-Forcing.md) for more details) into `./SBC`. Data required by the script are taken from [ERA5](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels?tab=form)
 
 And finally link the XIOS binary to the configuration directory and create a restarts directory.
 
