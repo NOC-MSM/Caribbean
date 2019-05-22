@@ -1,6 +1,5 @@
-***********************
-# GENERATE ERA5 FORCING
-***********************
+GENERATE ERA5 FORCING
+=====================
 
 **MAJOR UPDATE: April 2019: The ERA5 data have been extended from 1979 and are now hosted on [Copernicus CDS server](https://cds.climate.copernicus.eu/#!/home)**. 
   * new data are on a different grid so all data have been re downloaded on this grid
@@ -16,7 +15,11 @@ Quick details on how to generate [ECMWF ERA5](http://apps.ecmwf.int/data-catalog
   
 ## Download the data
 
-Keep in mind that ERA5 reanalysis provide hourly output at 31km globally so it's a large dataset.  The data are downloaded on the 0.25 degree regular grid with global coverage and a 1h resolution. NEMO bulk flux formulation requires a set of inputs. Below is the table of variables to be downloaded :
+Keep in mind that ERA5 reanalysis provide hourly output at 31km globally so it's a large dataset.  The data are downloaded on the 0.25 degree regular grid with global coverage and a 1h resolution. 
+
+The relevant surface level variables may be accessed at the [Copernicus Climate Data Store](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels?tab=form).
+
+NEMO bulk flux formulation requires a set of inputs. Below is the table of variables to be downloaded :
 
 |  CDS Name |  ECMWF var name |  Type  | Units  |
 |----------------|:-------------:|:------:|:-----------:|
@@ -26,7 +29,7 @@ Keep in mind that ERA5 reanalysis provide hourly output at 31km globally so it's
 | mean_sea_level_pressure                         | msl | Instantaneous | Pa  |
 | surface_pressure                                | sp  | Instantaneous | K   |
 | 2m_dewpoint_temperature                         | d2m | Instantaneous | Pa  |
-| Specific Humidity                               |     | Instantaneous |  %  |
+| Specific Humidity                               | sph | Instantaneous |  %  |
 | mean_surface_downward_short_wave_radiation_flux | msdwswrf | Averaged | W/m^2 |
 | mean_surface_downward_long_wave_radiation_flux  | msdwlwrf | Averaged | W/m^2 |
 | mean_snowfall_rate                              | msr      | Averaged | kg/m^2/s | 
@@ -55,7 +58,8 @@ conda install scipy
 
 Then the python script should work. Edit the beginning of the file to define the path to the ERA5 input data and if necessary, change the start and end times.   The domain boundaries are set up for this particular configuration and interpolation weights, so should not be changed independently.   
 
-[ERA5_gen.py](ERA5_gen.py)
+ ---- > add python script here
+ 
 
 After extracting the sub-region, the scripts loads all the file in memory and generates yearly file for NEMO, applying corrections when needed i.e. :
  * Beginning of the full time series is copied when the data are not present (before 6h for cumulated for example)
