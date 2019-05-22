@@ -41,6 +41,11 @@ cd nemo/NEMOGCM/CONFIG
 # Define the location of where the Caribbean configuration tarballs were downloaded
 export DOWNLOAD_DIR='path_to_download_directory'
 
+# Download the source and data files
+
+wget -P $DOWNLOAD_DIR https://github.com/NOC-MSM/Caribbean/releases/download/v1.0/caribbean_netcdf_files.tar.gz
+wget -P $DOWNLOAD_DIR https://github.com/NOC-MSM/Caribbean/archive/v1.0.tar.gz
+
 # copy configuration and its source code mods into correct locations before compilation
 pushd $DOWNLOAD_DIR; tar xvfz Caribbean-1.0.tar.gz; popd
 cp -a $DOWNLOAD_DIR/Caribbean-1.0 $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
