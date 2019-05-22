@@ -105,16 +105,16 @@
 !-----------------------------------------------------------------------
 !              !  file name                   ! frequency (hours) ! variable  ! time interp. !  clim  ! 'yearly'/ ! weights                              ! rotation ! land/sea mask !
 !              !                              !  (if <0  months)  !   name    !   (logical)  !  (T/F) ! 'monthly' ! filename                             ! pairing  ! filename      !
-   sn_humi=          'ERA5_SPH',                        1,            'SPH',       .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       '' 
-   sn_prec=          'ERA5_TP',                         1,            'TP',        .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
-   sn_qlw =          'ERA5_STRD',                       1,            'STRD',      .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
-   sn_qsr=           'ERA5_SSRD',                       1,            'SSRD',      .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
-   sn_snow=          'ERA5_SF',                         1,            'SF',        .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
-   sn_tair=          'ERA5_T2M',                        1,            'T2M',       .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
-   sn_wndi=          'ERA5_U10',                        1,            'U10',       .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    'Uwnd',   ''
-   sn_wndj=          'ERA5_V10',                        1,            'V10',       .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    'Vwnd',   ''
-   sn_slp=           'ERA5_MSL',                        1,            'MSL',       .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
-   !                    !  bulk algorithm :
+   sn_humi=          'ERA5_SPH',                        1,          'SPH',       .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_prec=          'ERA5_MTPR',                       1,          'MTPR',      .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_qlw =          'ERA5_MSDWLWRF',                   1,          'MSDWLWRF',  .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_qsr=           'ERA5_MSDWSWRF',                   1,          'MSDWSWRF',  .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_snow=          'ERA5_MSR',                        1,          'MSR',       .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_tair=          'ERA5_T2M',                        1,          'T2M',       .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_wndi=          'ERA5_U10',                        1,          'U10',       .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    'Uwnd',   ''
+   sn_wndj=          'ERA5_V10',                        1,            'V10',       .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    'Vwnd',   ''
+   sn_slp=           'ERA5_MSL',                        1,            'MSL',       .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   !  bulk algorithm :
    ln_NCAR     = .true.   ! "NCAR"      algorithm   (Large and Yeager 2008)
    ln_COARE_3p0= .false.   ! "COARE 3.0" algorithm   (Fairall et al. 2003)
    ln_COARE_3p5= .false.   ! "COARE 3.5" algorithm   (Edson et al. 2013)
@@ -154,7 +154,7 @@
 !-----------------------------------------------------------------------
 !          !  file name  ! frequency (hours) ! variable  ! time interp. !  clim  ! 'yearly'/ ! weights  ! rotation ! land/sea mask !
 !          !             !  (if <0  months)  !   name    !   (logical)  !  (T/F) ! 'monthly' ! filename ! pairing  ! filename      !
-   sn_apr=           'ERA5_MSL',                     1,            'MSL',        .true.,    .false.,   'yearly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
+   sn_apr=           'ERA5_MSL',                     1,            'MSL',        .true.,    .false.,   'monthly',    'caribbean_ERA5_msl_weights_bilinear_atmos.nc',    '',       ''
 
    cn_dir      = './SBC/'!  root directory for the location of the bulk files
    rn_pref     = 101200.    !  reference atmospheric pressure   [N/m2]/
