@@ -18,9 +18,9 @@ East         =   -54                              ## East Border
 West         =  -101                              ## West Border
 North        =   32                              ## North Border
 South        =   4                              ## South Border
-path_ERA5    = '/projectsa/NEMO/Forcing/ERA5/NEW/'   ## ROOT PATH OD ERA5 DATA
-path_EXTRACT = './EXTRACTION_CARIB/'              ## WHERE TO EXTRACT YOUR REGION
-path_FORCING = './FORCING/'                      ## NEMO FORCING
+path_ERA5    = 'path_to_era5_data'   ## ROOT PATH OD ERA5 DATA
+path_EXTRACT = 'path_to_output_to/'              ## WHERE TO EXTRACT YOUR REGION
+path_FORCING = 'path_to_nemo_forcing'                      ## NEMO FORCING
 clean        = False                             ## Clean extraction (longest bit)
 sph_ON       = True                              ## Compute specific humidity or not
 
