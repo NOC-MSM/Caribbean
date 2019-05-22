@@ -59,7 +59,7 @@ cd $WORK_DIR
 
 echo "Make sure that the correct modules are loaded"
 
-module swap PrgEnv-cray PrgEnv-intel
+module load PrgEnv-intel
 module load cray-hdf5-parallel
 module load cray-netcdf-hdf5parallel
 
@@ -68,10 +68,20 @@ echo "Checking out NEMO repository"
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk -r 8395 nemo
 cd nemo/NEMOGCM/CONFIG
 
-# Checkout configuration directory structure
-git init .
-echo "Checking out Caribbean git repository"
-git clone git@github.com:NOC-MSM/Caribbean.git
+# Define the location of where the Caribbean configuration tarballs were downloaded (keep this as the work dir for now)
+export DOWNLOAD_DIR="$WORK_DIR"
+
+# Download the source and data files
+echo "Downloading Caribbean release v1.0"
+
+wget -P $DOWNLOAD_DIR https://github.com/NOC-MSM/Caribbean/releases/download/v1.0/caribbean_netcdf_files.tar.gz
+wget -P $DOWNLOAD_DIR https://github.com/NOC-MSM/Caribbean/archive/Caribbean-v1.0.tar.gz
+
+# copy configuration and its source code mods into correct locations before compilation
+pushd $DOWNLOAD_DIR; tar xvfz Caribbean-v1.0.tar.gz; popd
+cp -a $DOWNLOAD_DIR/Caribbean-1.0 $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
+echo $WORK_DIR
+echo $DOWNLOAD_DIR
 
 # Add it to the configuration list
 echo "Caribbean OPA_SRC" >> cfg.txt
@@ -102,15 +112,18 @@ cd ../
 
 cd Caribbean/EXP00
 echo "Gathering forcing data"
-wget -r -np -nH --cut-dirs=3 -erobots=off --reject="index.html*" http://gws-access.ceda.ac.uk/public/recicle/Caribbean/
+tar xvfz $DOWNLOAD_DIR/caribbean_netcdf_files.tar.gz
 
 ln -s $XIOS_DIR/bin/xios_server.exe xios_server.exe
-mkdir restarts
 echo
 echo "  Auto-Config: Caribbean"
 echo "  **********************"
 echo
 echo "  To run the Caribbean Configuration:"
+echo
+echo "  - to generate additional ERA5 forcing data "
+echo "      see $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean/SCRIPTS/ERA5-Forcing.md"
+echo "      for more details" 
 echo
 echo "  - update the runscript.pbs accordingly "
 echo "      (project code, nodes, modules, etc)"
