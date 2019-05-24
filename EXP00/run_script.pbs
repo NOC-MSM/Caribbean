@@ -10,9 +10,18 @@
 #PBS -j oe
 #PBS -r n
 
-module swap PrgEnv-cray PrgEnv-intel
-module load cray-hdf5-parallel
-module load cray-netcdf-hdf5parallel
+if [ -z `echo $LOADEDMODULES | grep PrgEnv-intel` ]; then
+  current_PrgEnv=`echo $LOADEDMODULES | awk 'BEGIN{FS=OFS=":"} {for (i=1;i<=NF;i++) print $i}' | grep PrgEnv`
+  module swap $current_PrgEnv PrgEnv-intel
+fi
+
+if [ -z `echo $LOADEDMODULES | grep cray-netcdf-hdf5parallel` ]; then
+  module load cray-netcdf-hdf5parallel
+fi
+
+if [ -z `echo $LOADEDMODULES | grep cray-hdf5-parallel` ]; then
+  module load cray-hdf5-parallel
+fi
 
 export PBS_O_WORKDIR=$(readlink -f $PBS_O_WORKDIR)
 # Change to the direcotry that the job was submitted from
