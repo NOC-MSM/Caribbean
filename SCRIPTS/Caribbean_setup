@@ -124,6 +124,9 @@ echo "Gathering forcing data"
 tar xvfz $DOWNLOAD_DIR/caribbean_netcdf_files.tar.gz
 
 ln -s $XIOS_DIR/bin/xios_server.exe xios_server.exe
+
+mkdir restarts
+
 echo
 echo "  Auto-Config: Caribbean"
 echo "  **********************"
