@@ -56,7 +56,7 @@ cp -a $DOWNLOAD_DIR/Caribbean-1.0 $WORK_DIR/nemo/NEMOGCM/CONFIG/Caribbean
 echo "Caribbean OPA_SRC" >> cfg.txt
 ```
 
-You can fold the ```make_xios``` command into a serial job. NB ```$NETCDF_DIR``` and ```$HDF5_DIR``` must be part of your environment. This should be the case if you've used ```modules``` to setup the netcdf and hdf5 e.g. 
+On the ARCHER HPC facility ```$NETCDF_DIR``` and ```$HDF5_DIR``` must be part of your environment. This should be the case if you've used ```modules``` to setup the netcdf and hdf5. We also need to switch from the Cray to the Intel environment e.g.
 
 ```
 module swap PrgEnv-cray PrgEnv-intel
