@@ -14,7 +14,7 @@ The Commonwealth Marine Economies (CME) Programme was announced by the British P
 
 ### Model Summary
 
-The model grid has 1/12&deg; lat-lon resolution and 75 hybrid sigma-z-partial-step vertical levels. The domain covers  -4.91&deg;N to -31.56&deg;N, 100.17&deg;E to 54.92&deg;E.   For more details on the model parameters, bathymetry and external forcing, see Wilson, Harle and Wakelin (2019). "Development of a regional ocean model for the Caribbean", NOC Research and Consultancy Report No. 65, available from the [NERC Open Research Archive](www.nora.nerc.ac.uk).
+The model grid has 1/12&deg; lat-lon resolution and 75 hybrid sigma-z-partial-step vertical levels. The domain covers  -4.91&deg;N to -31.56&deg;N, 100.17&deg;E to 54.92&deg;E.   For more details on the model parameters, bathymetry and external forcing, see Wilson, Harle and Wakelin (2019). "Development of a regional ocean model for the Caribbean", NOC Research and Consultancy Report [No. 65](http://nora.nerc.ac.uk/id/eprint/523606/), available from the [NERC Open Research Archive](www.nora.nerc.ac.uk).
 
 ### Model Setup
 
