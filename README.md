@@ -1,7 +1,6 @@
 ************
 # Caribbean
 ************
-![pynemo](https://pynemo.readthedocs.io/en/latest/_images/eg2.png)
 
 This model configuration has been developed through the [Commonwealth Marine Economies Programme](http://projects.noc.ac.uk/cme-programme/)
 
