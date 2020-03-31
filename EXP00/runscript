@@ -1,0 +1,143 @@
+#!/bin/bash
+
+# Use: ./runscript &> run.out &
+
+# Options
+PREP=1        # Prepare namelists  
+LREST=1       # Link restarts
+RUN=1         # Run simulation year
+TIDY=1        # Tidy output
+COMP=1        # Compress output 
+
+# Simulation 
+Y0=1979       # Reference year (year before start of simulation)
+YR=1980       # Current year of simulation
+YE=1980       # Final year of simulation
+
+NEST=0        # Running with nest
+
+TSPY=11680    # Timesteps per year
+SFAC=3        # Scaling factor for nest timesteps 
+
+
+###############################################################
+while [ $YR -le $YE ]; do
+
+  NYR=$(expr $YR - $Y0)
+
+  if [ $PREP -eq 1 ]; then  
+  ###############################################################
+  # Prepare namelist_cfg 
+  TSSm=$(expr $TSPY \* $((NYR-1)) )
+  TSS=$(expr $TSPY \* $((NYR-1)) + 1 )
+  TSE=$(expr $TSPY \* $NYR)
+  echo "Time step =" $TSS $TSE
+  
+  # Edit in the new start and stop timesteps 
+  sed -i '/  nn_it000/c\   nn_it000    = '$TSS' ' namelist_cfg
+  sed -i '/  nn_itend/c\   nn_itend    = '$TSE' ' namelist_cfg
+  
+  # check ln_rstart set correctly
+  if [ $TSS -eq 1 ]; then
+    sed -i '/  ln_rstart/c\   ln_rstart = .false. ' namelist_cfg
+  else
+    sed -i '/  ln_rstart/c\   ln_rstart = .true. ' namelist_cfg
+  fi
+  cp namelist_cfg namelist_cfg_$YR
+  
+  if [ $NEST -eq 1 ]; then
+  
+    NTSPY=$(expr $TSPY \* $SFAC) 
+    
+    NTSSm=$(expr $NTSPY \* $((NYR-1)) )
+    NTSS=$(expr $NTSPY \* $((NYR-1)) + 1 )
+    NTSE=$(expr $NTSPY \* $NYR)
+    echo "Nest time step =" $NTSS $NTSE
+    
+    # Edit in the new start and stop timesteps 
+    sed -i '/  nn_it000/c\   nn_it000    = '$NTSS' ' 1_namelist_cfg
+    sed -i '/  nn_itend/c\   nn_itend    = '$NTSE' ' 1_namelist_cfg
+    
+    # check ln_rstart set correctly
+    if [ $NTSS -eq 1 ]; then
+      sed -i '/  ln_rstart/c\   ln_rstart = .false. ' 1_namelist_cfg
+    else
+      sed -i '/  ln_rstart/c\   ln_rstart = .true. ' 1_namelist_cfg
+    fi
+    cp 1_namelist_cfg 1_namelist_cfg_$YR
+  fi
+  ###############################################################
+  fi
+
+  if [ $LREST -eq 1 ]; then
+  ###############################################################
+  # Link restart files
+  cd RESTARTS
+
+  if [ -L restart_0000.nc ]; then
+    rm restart_????.nc restart_ice_????.nc
+  fi
+  for i in *$TSSm*nc; do
+    ln -s $i ${i#*${TSSm}_}
+  done
+  
+  if [ $NEST -eq 1 ]; then
+    if [ -L 1_restart_0000.nc ]; then
+      rm 1_restart_????.nc 1_restart_ice_????.nc
+    fi
+    for i in *$NTSSm*nc; do
+      ln -s $i 1_${i#*${NTSSm}_}
+    done
+  fi
+
+  cd ..
+  ###############################################################
+  fi
+
+  if [ $RUN -eq 1 ]; then
+  ###############################################################
+  # Run increment
+  TIME1=`date +%s`
+  echo "Submitting at:  " `date`
+  sbatch -W run.bash
+  TIME2=`date +%s`
+  
+  # Use expr to do the math, let's say TIME1 was the start and TIME2 was the finish
+  DIFFSEC=$(expr ${TIME2} - ${TIME1})
+  echo Took ${DIFFSEC} seconds.
+  # And use date to convert the seconds back to something more meaningful
+  echo Took `date +%H:%M:%S -ud @${DIFFSEC}`
+  ###############################################################
+  fi
+
+  if [ $TIDY -eq 1 ]; then
+  ###############################################################
+  # Tidy output  &  compress if required
+  mv ocean.output        LOGS/ocean.output_${YR}
+  mv output.namelist.dyn LOGS/output.namelist.dyn_${YR}
+  mv output.namelist.ice LOGS/output.namelist.ice_${YR}
+  mv layout.dat          LOGS/layout.dat_${YR}
+  if [ $NEST -eq 1 ]; then
+    mv 1_ocean.output        LOGS/1_ocean.output_${YR}
+    mv 1_output.namelist.dyn LOGS/1_output.namelist.dyn_${YR}
+    mv 1_output.namelist.ice LOGS/1_output.namelist.ice_${YR}
+    mv 1_layout.dat          LOGS/1_layout.dat_${YR}
+  fi
+
+
+  if [ ! -d TIDY/$YR ]; then
+     mkdir TIDY/$YR
+  fi
+  mv *_$YR*nc TIDY/$YR
+
+  if [ $COMP -eq 1 ]; then
+    ./compress_via_nccopy.script TIDY/$YR > TIDY/comp_${YR}.out &  
+  fi
+  ###############################################################
+  fi
+
+  YR=$(( YR+1 ))
+done
+###############################################################
+
+exit

@@ -1,0 +1,62 @@
+#!/bin/bash
+#SBATCH -N 7
+#SBATCH --time=00:19:00 
+
+module purge
+module load shared
+module load gcc
+module load intel/compiler/64/14.0/2013_sp1.2.144
+module load openmpi/intel/64/1.6.5
+module load slurm/2.5.7
+
+#
+  export OMP_NUM_THREADS=1
+  export OCORES=96
+  export XCORES=1
+  export XIO_HOME=/home/acc/XIOS_1.0_r803
+#
+  export EXE_DIR=/home/jdha/NEMO/trunk/NEMOGCM/CONFIG/AMM12/EXP00
+#
+# end of set up
+###############################################################
+#
+# change to the working directory 
+#
+  cd $EXE_DIR
+  echo Directory is `pwd`
+  if [ $XCORES -eq 0 ]; then
+#
+# Run SPMD case
+#
+       echo time `which mpirun` --report-bindings -x MALLOC_MMAP_MAX_=-1                 \
+                                -x MALLOC_TRIM_THRESHOLD_=33554432 -np $OCORES --bynode  \
+                                --mca mpi_paffinity_alone 1 ./opa 
+            time `which mpirun` --report-bindings -x MALLOC_MMAP_MAX_=-1                 \
+                                -x MALLOC_TRIM_THRESHOLD_=33554432 -np $OCORES --bynode  \
+                                --mca mpi_paffinity_alone 1 ./opa 
+  else
+       if [ ! -f ./xios_server.exe ] && [ -f ${XIO_HOME}/bin/xios_server.exe ]; then
+          cp ${XIO_HOME}/bin/xios_server.exe .
+       fi
+       if [ ! -f ./xios_server.exe ]; then
+          echo "./xios_server.exe not found"
+          echo "run aborted"
+          exit
+       fi
+#
+#  Run MPMD case
+#
+       echo time `which mpirun` --report-bindings -x MALLOC_MMAP_MAX_=-1 \
+                                -x MALLOC_TRIM_THRESHOLD_=33554432       \
+                                -np $XCORES ./xios_server.exe            \
+                              : -np $OCORES --bynode  --mca mpi_paffinity_alone 1 ./opa 
+#
+            time `which mpirun` --report-bindings -x MALLOC_MMAP_MAX_=-1 \
+                                -x MALLOC_TRIM_THRESHOLD_=33554432       \
+                                -np $XCORES ./xios_server.exe            \
+                              : -np $OCORES --bynode  --mca mpi_paffinity_alone 1 ./opa 
+#
+  fi
+#
+  exit
+
