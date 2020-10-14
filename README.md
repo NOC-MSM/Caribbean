@@ -1,6 +1,7 @@
 ************
 # Caribbean
 ************
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3228088.svg)](https://doi.org/10.5281/zenodo.3228088)
 
 This model configuration has been developed through the [Commonwealth Marine Economies Programme](http://projects.noc.ac.uk/cme-programme/)
 
